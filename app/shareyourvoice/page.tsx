@@ -89,7 +89,7 @@ export default function ShareYourVoice() {
           Prefer a direct discussion?
         </h2>
         <p className="text-xs text-gray-500 font-light leading-relaxed">
-          If you have complex feedback, pilot coordination queries, or are an assistive technology SLP researcher, reach out to founder Catherine Katambo directly via email at <a href="mailto:info@vocasafewatch.net" className="text-accent-orange font-semibold hover:underline">info@vocasafewatch.net</a>.
+          If you have complex feedback, pilot coordination queries, or are an assistive technology SLP researcher, reach out to founder Catherine Katambo directly via email at <a href="mailto:catherine@vocasafewatch.net" className="text-accent-orange font-semibold hover:underline">info@vocasafewatch.net</a>.
         </p>
         <div className="pt-2">
           <Link
