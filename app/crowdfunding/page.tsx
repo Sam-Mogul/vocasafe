@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Heart, Compass, ShieldAlert, Award, FileText, CheckCircle2, Share2, PhoneCall } from "lucide-react";
+import Image from "next/image";
+import { ShieldAlert } from "lucide-react";
+import ShareButtons from "./ShareButtons";
 
 export const metadata: Metadata = {
-  title: "Support VocaSafe Watch™: Augmentative Communication Devices for Everyone | VocaSafe",
-  description: "Discover augmentative communication devices designed for safety and accessibility. Support VocaSafe Watch™ to empower every voice.",
+  title: "Support Vocasafe Watch™: Augmentative Communication Devices for Everyone | Vocasafe",
+  description: "Discover augmentative communication devices designed for safety and accessibility. Support Vocasafe Watch™ to empower every voice.",
   alternates: {
     canonical: "https://www.vocasafewatch.net/crowdfunding",
   },
   openGraph: {
-    title: "Support VocaSafe Watch™: Augmentative Communication Devices for Everyone | VocaSafe",
-    description: "Discover augmentative communication devices designed for safety and accessibility. Support VocaSafe Watch™ to empower every voice.",
+    title: "Support Vocasafe Watch™: Augmentative Communication Devices for Everyone | Vocasafe",
+    description: "Discover augmentative communication devices designed for safety and accessibility. Support Vocasafe Watch™ to empower every voice.",
     url: "https://www.vocasafewatch.net/crowdfunding",
     siteName: "Vocasafewatch",
     images: [
@@ -18,7 +20,7 @@ export const metadata: Metadata = {
         url: "https://www.vocasafewatch.net/images/og/f376fd_a930a4ca467b43a9ad80e71f7d2ca638~mv2.jpg",
         width: 612,
         height: 408,
-        alt: "Support VocaSafe Watch Crowdfunding",
+        alt: "Support Vocasafe Watch Crowdfunding",
       },
     ],
     type: "website",
@@ -36,7 +38,7 @@ const REWARDS = [
   {
     tier: "Early Backer",
     amount: "$49",
-    description: "Branded VocaSafe sensory strap merchandise, direct progress updates, an official backer certificate, and impact roll recognition.",
+    description: "Branded Vocasafe sensory strap merchandise, direct progress updates, an official backer certificate, and impact roll recognition.",
     btnLabel: "Select Tier",
     tag: "merch",
   },
@@ -87,220 +89,258 @@ export default function Crowdfunding() {
   const shareUrl = "https://www.vocasafewatch.net/crowdfunding";
   
   return (
-    <div className="flex flex-col min-h-screen bg-neutral-light/50">
-      {/* 1. Hero Section */}
-      <section className="bg-gradient-to-br from-primary-navy to-slate-900 text-white py-16 lg:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+    <div className="flex flex-col min-h-screen bg-white">
+      {/* 1. Hero Section matching Screenshot 1 */}
+      <section className="relative w-full h-[450px] sm:h-[550px] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <Image
+          src="/images/disp- vocasafe.webp"
+          alt="Help Bring the Vocasafe Watch to Life"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        {/* Dark Tint Overlay */}
+        <div className="absolute inset-0 bg-black/65 z-10" />
         
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 text-center relative z-10 space-y-6">
-          <span className="text-accent-orange uppercase font-bold tracking-widest text-xs">
-            Community-Backed Action
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-display font-bold leading-tight">
-            Help Bring the VocaSafe Watch™ to Life
-          </h1>
-          <p className="text-base sm:text-lg text-white/80 font-light max-w-2xl mx-auto leading-relaxed">
-            Support early-stage engineering, safety testing, and co-design workshops to give autistic children and non-verbal individuals a durable, wearable voice.
-          </p>
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:30px_30px] z-10" />
 
-          <div className="pt-4 flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
-            <Link
-              href="/contact-us?type=Join%20waitlist"
-              className="gradient-orange hover:shadow-lg font-bold uppercase tracking-wider py-4 px-8 rounded-full text-xs shadow-md text-white text-center transition-all cursor-pointer"
-            >
-              BACK VOCASAFE
-            </Link>
-            <a
-              href="/pdfs/vocasafe-crowdfunding-faq.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white/10 hover:bg-white/15 border border-white/20 font-bold uppercase tracking-wider py-4 px-8 rounded-full text-xs text-white text-center transition-all flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <FileText size={14} />
-              <span>Download Campaign FAQ</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. Social Share Bar */}
-      <section className="py-4 bg-white border-b border-gray-100 shadow-sm">
-        <div className="max-w-xl mx-auto px-4 flex items-center justify-between gap-2 text-xs text-gray-500 font-bold">
-          <span className="flex items-center gap-1.5 text-primary-navy">
-            <Share2 size={14} className="text-accent-orange" />
-            <span>SHARE:</span>
-          </span>
-          <div className="flex items-center gap-3">
-            {/* Facebook */}
-            <a
-              href={`https://facebook.com/sharer/sharer.php?u=${shareUrl}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 hover:bg-gray-50 rounded text-blue-600 transition-colors"
-              aria-label="Share on Facebook"
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M9 8H7v3h2v9h3v-9h3.6L16 8h-4V6c0-.5.5-1 1-1h3V2h-3c-3 0-5 2-5 5v1z" />
-              </svg>
-            </a>
-            {/* X (formerly Twitter) */}
-            <a
-              href={`https://twitter.com/intent/tweet?url=${shareUrl}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 hover:bg-gray-50 rounded text-black transition-colors"
-              aria-label="Share on X"
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-            </a>
-            {/* WhatsApp */}
-            <a
-              href={`https://api.whatsapp.com/send/?text=${shareUrl}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 hover:bg-gray-50 rounded text-green-500 transition-colors"
-              aria-label="Share on WhatsApp"
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.859 0c3.166.001 6.141 1.233 8.375 3.469 2.235 2.235 3.465 5.212 3.465 8.381 0 6.536-5.325 11.86-11.859 11.86-2.007-.001-3.98-.513-5.736-1.489L0 24zm6.59-4.846c1.66.988 3.284 1.488 4.962 1.49 5.333 0 9.67-4.332 9.67-9.664 0-2.584-1.004-5.012-2.827-6.837A9.617 9.617 0 0 0 11.86 1.34c-5.338 0-9.673 4.333-9.673 9.667 0 1.761.472 3.48 1.365 5.013l-.973 3.55 3.633-.952zm10.748-6.195c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.669.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.568-.01-.197 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-              </svg>
-            </a>
-            {/* LinkedIn */}
-            <a
-              href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 hover:bg-gray-50 rounded text-blue-700 transition-colors"
-              aria-label="Share on LinkedIn"
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            </a>
-            {/* Pinterest */}
-            <a
-              href={`https://pinterest.com/pin/create/button/?url=${shareUrl}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 hover:bg-gray-50 rounded text-red-600 transition-colors"
-              aria-label="Share on Pinterest"
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M12.017 0c-6.627 0-12 5.373-12 12 0 5.077 3.146 9.426 7.613 11.217-.102-.947-.195-2.408.04-3.443.213-.932 1.377-5.83 1.377-5.83s-.351-.703-.351-1.743c0-1.633.947-2.853 2.126-2.853.999 0 1.482.75 1.482 1.65 0 1.004-.639 2.508-.969 3.899-.276 1.165.584 2.114 1.732 2.114 2.079 0 3.677-2.193 3.677-5.361 0-2.803-2.015-4.764-4.891-4.764-3.33 0-5.286 2.498-5.286 5.08 0 1.005.387 2.083.871 2.67.095.116.109.217.08.334-.088.367-.284 1.157-.323 1.312-.05.212-.172.257-.397.153-1.484-.691-2.409-2.862-2.409-4.606 0-3.753 2.727-7.202 7.863-7.202 4.127 0 7.335 2.94 7.335 6.873 0 4.103-2.588 7.404-6.177 7.404-1.205 0-2.337-.626-2.726-1.369l-.744 2.829c-.269 1.025-.998 2.309-1.486 3.107 1.127.349 2.321.537 3.559.537 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Founder Story (Roy Narrative) */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 space-y-8">
-          <div className="text-center space-y-3">
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-navy">
-              A Mother's Vision for Safety & Speech
-            </h2>
-            <div className="w-12 h-1 bg-accent-orange mx-auto rounded-full" />
-          </div>
-
-          <div className="bg-neutral-light border border-gray-100 rounded-2xl p-8 space-y-6">
-            <p className="text-sm text-gray-600 font-light leading-relaxed">
-              When my son Roy, who is non-verbal and on the autism spectrum, ran ahead of me during a crowded playground outing, I experienced an paralyzing fear. He had no way to say he was lost, no way to ask for help, and no way to locate me. standard communication tablets are too fragile to take on the swings or near sandbox mud, leaving him entirely without a voice when he wanders independently.
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full text-left pt-20">
+          <div className="max-w-3xl space-y-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-white leading-tight tracking-tight">
+              Help Bring the Vocasafe Watch to Life
+            </h1>
+            
+            <p className="text-sm sm:text-lg text-white/90 font-sans font-light leading-relaxed max-w-2xl">
+              Designing a durable, water-resistant smartwatch designed to support AAC communication and safety for individuals with autism and speech differences.
             </p>
-            <p className="text-sm text-gray-600 font-light leading-relaxed">
-              That day, I committed to building the device he needed. VocaSafe Watch™ is engineered to place symbol-based speech right on his wrist in a durable, waterproof shell, adding real-time GPS boundary alerts and secure caregiver listener feeds. We are bypassing clinical standard setups and corporate lag. By backing VocaSafe, you directly fund our independent pre-seed hardware validation and help us deliver this vital lifeline to families everywhere.
-            </p>
-            <strong className="block text-xs text-primary-navy uppercase tracking-wider">
-              — Catherine Katambo, Founder & Mother
-            </strong>
-          </div>
-        </div>
-      </section>
 
-      {/* 4. Bridging the Gap: Problem vs Solution */}
-      <section className="py-16 bg-neutral-light border-y border-gray-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 space-y-12">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-navy">
-              Bridging the Communication Gap
-            </h2>
-            <p className="text-xs text-gray-500 font-medium">
-              Moving Speech from Fragile Tablets to Durable Wearables
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white border border-red-100 p-8 rounded-2xl shadow-sm space-y-4">
-              <span className="text-xs font-bold text-red-500 uppercase tracking-wider block">
-                The Core Problem
-              </span>
-              <h3 className="text-lg font-bold text-primary-navy">Fragile & Tethered Devices</h3>
-              <p className="text-xs text-gray-500 font-light leading-relaxed">
-                Standard speech tablets are easily broken, dropped, or forgotten in lockers. Caregivers face constant anxiety during park outings, sensory playgrounds, and pool visits, where children roam without communication tools. If separated, the user cannot state their name or ask for help, resulting in high panic levels.
-              </p>
-            </div>
-
-            <div className="bg-white border border-green-100 p-8 rounded-2xl shadow-sm space-y-4">
-              <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider block">
-                The VocaSafe Solution
-              </span>
-              <h3 className="text-lg font-bold text-primary-navy">Waterproof Wrist-Worn Lifelines</h3>
-              <p className="text-xs text-gray-500 font-light leading-relaxed">
-                A rugged, waterproof wearable that stays attached all day. Converts visual taps to clear synthesized speech on-the-go. Continuous silent GPS check pings caregivers, triggering immediate phone notifications if the user crosses geo-boundaries, reducing resolution speeds to mere seconds.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. How Your Contribution Helps (6 use-of-funds items) */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 space-y-16">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-navy">
-              Use of Campaign Funds
-            </h2>
-            <div className="w-12 h-1 bg-accent-orange mx-auto rounded-full" />
-            <p className="text-sm text-gray-500 font-light">
-              We allocate every backer dollar directly to hardware certifications and validation trials.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {FUNDS.map((fund, idx) => (
-              <div
-                key={idx}
-                className="bg-neutral-light border border-gray-100 p-6 rounded-2xl hover:shadow-sm transition-all"
+            <div className="pt-4 flex flex-col sm:flex-row gap-4 sm:items-center">
+              {/* Dynamic split rounded button */}
+              <Link
+                href="/contact-us?type=Join%20waitlist"
+                className="flex items-center rounded-full overflow-hidden border border-white/20 shadow-md max-w-xs cursor-pointer group"
               >
-                <span className="block text-xs font-black text-accent-orange mb-2">
-                  0{idx + 1}
+                <span className="bg-accent-orange px-4 py-3 flex items-center justify-center text-white">
+                  <span className="text-xs">→</span>
                 </span>
-                <h3 className="font-bold text-primary-navy text-sm mb-2">
-                  {fund.title}
-                </h3>
-                <p className="text-xs text-gray-500 font-light leading-relaxed">
-                  {fund.description}
+                <span className="bg-[#1A1A1A] hover:bg-neutral-light hover:text-black text-white text-xs font-bold uppercase tracking-widest px-6 py-3 flex-grow text-center transition-all">
+                  Back Vocasafe
+                </span>
+              </Link>
+
+              {/* Orange action button */}
+              <a
+                href="/pdfs/vocasafe-crowdfunding-faq.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gradient-orange hover:shadow-lg font-bold uppercase tracking-wider py-3.5 px-8 rounded-full text-xs shadow-md text-white text-center transition-all flex items-center justify-center gap-1.5 cursor-pointer max-w-xs"
+              >
+                <span>Download Campaign</span>
+                <span className="text-white text-[13px]">✦</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Story Behind Vocasafe Section matching Screenshot 2 */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Image of Girl on Couch */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="relative w-full max-w-[480px] aspect-[4/3] rounded-sm overflow-hidden bg-neutral-light border border-gray-100 shadow-md">
+                <Image
+                  src="/images/disp- vocasafe.webp"
+                  alt="Vocasafe Watch Lived Experience"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 480px"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Right Story Text */}
+            <div className="lg:col-span-7 space-y-6 text-left">
+              <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-primary-navy tracking-tight leading-tight">
+                The Story Behind Vocasafe
+              </h2>
+              
+              {/* Badge item */}
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 bg-[#1A1A1A] flex items-center justify-center rounded-sm text-white">
+                  <span className="text-[8px] font-sans">▶</span>
+                </div>
+                <span className="text-[10px] font-sans font-bold text-gray-500 uppercase tracking-widest">
+                  About Vocasafe Watch™
+                </span>
+              </div>
+
+              <div className="space-y-4 text-xs sm:text-sm text-gray-600 font-sans font-light leading-relaxed">
+                <p>
+                  Vocasafe Watch™ was born from lived experience. As a mother to Roy, who uses AAC to communicate, I often saw his voice disappear when near water or outdoors. Tablets couldn't go everywhere — and that meant communication couldn't either.
+                </p>
+                <p>
+                  I decided to change that.
+                </p>
+                <p>
+                  Vocasafe Watch™ is designed to make communication accessible anywhere, anytime — through a durable, waterproof, sensory-friendly design that will keep AAC communication on the wrist.
+                </p>
+                <p className="text-accent-orange font-bold">
+                  This campaign helps us move from prototype to pilot, turning a lived experience into a solution for families around the world.
                 </p>
               </div>
-            ))}
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* 6. Reward Tiers */}
-      <section className="py-20 bg-neutral-light border-y border-gray-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 space-y-16">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-navy">
-              Campaign Reward Tiers
+      {/* 3. Share Our Campaign Section matching Screenshot 2 footer */}
+      <section className="py-8 bg-white border-t border-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 space-y-4">
+          <h3 className="text-base font-sans font-bold text-[#111111] tracking-tight">
+            Share Our Campaign
+          </h3>
+          <ShareButtons shareUrl={shareUrl} />
+        </div>
+      </section>
+
+      {/* 4. Vocasafe Watch Features Section matching Screenshot 3 & 4 */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 space-y-12">
+          
+          {/* Section title & line with square indicator */}
+          <div className="space-y-4">
+            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-primary-navy tracking-tight text-left">
+              Vocasafe Watch Features
             </h2>
-            <p className="text-xs text-gray-500 font-medium uppercase tracking-widest">
-              Back VocaSafe to Unlock Special Milestones
+            
+            {/* Premium Divider */}
+            <div className="w-full h-[1px] bg-gray-200 relative mb-12">
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-black" />
+            </div>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+            
+            {/* Card 01 */}
+            <div className="bg-neutral-light/35 border border-gray-100/60 rounded-xl p-8 sm:p-10 space-y-6 flex flex-col justify-between hover:shadow-sm transition-all duration-300">
+              <div className="space-y-4">
+                <div className="w-8 h-8 rounded-sm bg-accent-orange text-white text-[11px] font-bold font-sans flex items-center justify-center">
+                  01
+                </div>
+                <h3 className="text-xl sm:text-2xl font-display font-extrabold text-primary-navy tracking-tight leading-snug">
+                  Seamless AAC Communication
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600 font-sans font-light leading-relaxed">
+                  Vocasafe Watch™ is designed to bring communication to the wrist— aiming to make every moment accessible. Through planned compatibility with leading AAC systems, it aims to empower users to express themselves using personalized phrases, visual symbols, and text-to-speech features wherever they go. Designed to complement existing AAC tools, Vocasafe aims to extend the freedom to communicate anywhere, anytime.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 02 */}
+            <div className="bg-neutral-light/35 border border-gray-100/60 rounded-xl p-8 sm:p-10 space-y-6 flex flex-col justify-between hover:shadow-sm transition-all duration-300">
+              <div className="space-y-4">
+                <div className="w-8 h-8 rounded-sm bg-accent-orange text-white text-[11px] font-bold font-sans flex items-center justify-center">
+                  02
+                </div>
+                <h3 className="text-xl sm:text-2xl font-display font-extrabold text-primary-navy tracking-tight leading-snug">
+                  Durable and Waterproof
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600 font-sans font-light leading-relaxed">
+                  Built for real life — from the pool to the playground, Vocasafe Watch™ is designed with durability and water resistance in mind, aiming to ensure that speech access never stops due to weather, spills, or water activities. Every detail is engineered for everyday adventures, aiming to give users confidence to communicate without limits.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 03 */}
+            <div className="bg-neutral-light/35 border border-gray-100/60 rounded-xl p-8 sm:p-10 space-y-6 flex flex-col justify-between hover:shadow-sm transition-all duration-300">
+              <div className="space-y-4">
+                <div className="w-8 h-8 rounded-sm bg-accent-orange text-white text-[11px] font-bold font-sans flex items-center justify-center">
+                  03
+                </div>
+                <h3 className="text-xl sm:text-2xl font-display font-extrabold text-primary-navy tracking-tight leading-snug">
+                  Smart Safety for Peace of Mind
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600 font-sans font-light leading-relaxed">
+                  Designed to be more than communication — aiming for peace of mind. With planned GPS tracking and safety alerts, Vocasafe Watch™ is designed to help caregivers, parents, and professionals stay connected. Planned location updates and customizable safe-zone notifications are designed to provide added security wherever users go.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 04 */}
+            <div className="bg-neutral-light/35 border border-gray-100/60 rounded-xl p-8 sm:p-10 space-y-6 flex flex-col justify-between hover:shadow-sm transition-all duration-300">
+              <div className="space-y-4">
+                <div className="w-8 h-8 rounded-sm bg-accent-orange text-white text-[11px] font-bold font-sans flex items-center justify-center">
+                  04
+                </div>
+                <h3 className="text-xl sm:text-2xl font-display font-extrabold text-primary-navy tracking-tight leading-snug">
+                  Comfort That Adapts to Every User
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600 font-sans font-light leading-relaxed">
+                  Designed for comfort, built for inclusion. The soft, interchangeable silicone straps are designed to reduce sensory discomfort while allowing self-expression through color and texture choices. Whether in school, therapy, or community settings, Vocasafe Watch™ is designed to adapt to each user's unique sensory needs.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 5. The Impact Section matching Screenshot 5 */}
+      <section className="py-20 bg-primary-navy text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 space-y-8 relative z-10 text-left">
+          <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight leading-tight">
+            The Impact
+          </h2>
+          
+          <div className="w-full h-[1px] bg-white/10 relative" />
+
+          <div className="max-w-4xl space-y-6 text-sm sm:text-base text-white/80 font-sans font-light leading-relaxed">
+            <p>
+              Vocasafe Watch™ aims to create transformative impact across multiple stakeholder groups: aiming to help individuals with communication differences gain unprecedented independence and environmental access; designed to help families experience reduced anxiety and enhanced safety monitoring; and planned to provide educators and therapists with powerful new tools for AAC implementation in diverse settings.
+            </p>
+            <p>
+              Our technology is designed to empower participation in activities previously inaccessible to AAC users — swimming lessons, water parks, outdoor recreation, rainy-day outings — with the goal of fundamentally expanding quality of life and social inclusion.
             </p>
           </div>
 
+          <div className="pt-4">
+            <Link
+              href="/impact"
+              className="inline-flex items-center gap-2 bg-accent-orange hover:bg-orange-600 text-white font-bold uppercase tracking-wider py-3.5 px-8 rounded-full text-xs transition-all shadow-md cursor-pointer"
+            >
+              <span>READ MORE</span>
+              <span>→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. How Your Contribution Helps matching Screenshot 5 Bottom */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 space-y-16">
+          <div className="space-y-4 text-left">
+            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-primary-navy tracking-tight">
+              How Your Contribution Helps
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-500 font-sans font-medium">
+              Assistive technology designed for individuals with communication challenges
+            </p>
+            
+            {/* Slider bar style divider */}
+            <div className="w-full h-[1px] bg-gray-200 relative mb-8 pt-1">
+              <div className="absolute left-[35%] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#111111]" />
+            </div>
+          </div>
+
+          {/* Reward Tiers */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {REWARDS.map((reward, idx) => (
               <div
@@ -336,7 +376,41 @@ export default function Crowdfunding() {
         </div>
       </section>
 
-      {/* 7. Project Timeline */}
+      {/* 7. Use of Campaign Funds */}
+      <section className="py-20 bg-neutral-light/35 border-t border-b border-gray-100/60">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 space-y-16">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-navy">
+              Use of Campaign Funds
+            </h2>
+            <div className="w-12 h-1 bg-accent-orange mx-auto rounded-full" />
+            <p className="text-sm text-gray-500 font-light">
+              We allocate every backer dollar directly to hardware certifications and validation trials.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {FUNDS.map((fund, idx) => (
+              <div
+                key={idx}
+                className="bg-white border border-gray-100 p-6 rounded-2xl hover:shadow-sm transition-all"
+              >
+                <span className="block text-xs font-black text-accent-orange mb-2">
+                  0{idx + 1}
+                </span>
+                <h3 className="font-bold text-primary-navy text-sm mb-2">
+                  {fund.title}
+                </h3>
+                <p className="text-xs text-gray-500 font-light leading-relaxed">
+                  {fund.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. Project Timeline */}
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -379,7 +453,7 @@ export default function Crowdfunding() {
         </div>
       </section>
 
-      {/* 8. Transparency Notice */}
+      {/* 9. Transparency Notice */}
       <section className="py-16 bg-neutral-light border-t border-gray-100 text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 space-y-4">
           <h3 className="text-base font-bold text-primary-navy uppercase tracking-wider flex items-center justify-center gap-1.5">
@@ -387,7 +461,7 @@ export default function Crowdfunding() {
             <span>Transparency & Compliance Statement</span>
           </h3>
           <p className="text-xs text-gray-500 max-w-2xl mx-auto leading-relaxed font-light">
-            VocaSafe Watch™ is a patent-pending product currently undergoing active prototype design, industrial engineering, and testing. It is not currently shipping or certified by regulatory boards. All crowdfunding backer rewards represent waitlist designations to contribute towards pre-production certifications.
+            Vocasafe Watch™ is a patent-pending product currently undergoing active prototype design, industrial engineering, and testing. It is not currently shipping or certified by regulatory boards. All crowdfunding backer rewards represent waitlist designations to contribute towards pre-production certifications.
           </p>
           <div className="pt-2">
             <Link

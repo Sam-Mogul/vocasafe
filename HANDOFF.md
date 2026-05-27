@@ -1,4 +1,4 @@
-# VocaSafe Watch™ — Site Operations Handoff & Database Operations Document
+﻿# Vocasafe Watch™ — Site Operations Handoff & Database Operations Document
 
 Welcome to your new custom Next.js website! This site is designed for high-performance, excellent SEO, premium visuals, and easy maintenance. This document provides clear, step-by-step instructions so that Catherine's team can operate, write, and update the website completely independently.
 
@@ -12,7 +12,7 @@ We have built the blog structure to support **Sanity.io**. You have a visual edi
 1. **Login:** Log in to your Sanity project dashboard (at `https://www.sanity.io/manage` or your deployed Sanity Studio url).
 2. **Schema Selection:** In the Studio, you will see three content types:
    - **Post:** The actual article.
-   - **Author:** Author bios (e.g., *Catherine Katambo* or *VocaSafe Watch Team*).
+   - **Author:** Author bios (e.g., *Catherine Katambo* or *Vocasafe Watch Team*).
    - **Category:** Categorization tags (e.g., *Wearable AAC Tech*, *Safety Innovations*).
 3. **Adding a New Post:**
    - Click **Create Document** under **Post**.
@@ -118,7 +118,7 @@ create index if not exists idx_uploads_created_at on public.uploads (created_at 
 -- ROW LEVEL SECURITY (RLS) POLICY EXPLANATION
 -- ==========================================
 -- By default, Supabase enables RLS. 
--- Because VocaSafe's backend API routes write to your database using the secure "SUPABASE_SERVICE_ROLE_KEY",
+-- Because Vocasafe's backend API routes write to your database using the secure "SUPABASE_SERVICE_ROLE_KEY",
 -- all database insertions bypass RLS safely on the server side. 
 -- No public-write policies are required in the dashboard, protecting your records from external browser tampering!
 ```
@@ -127,7 +127,7 @@ create index if not exists idx_uploads_created_at on public.uploads (created_at 
 
 ## 5. Updating Corporate Contact Information
 
-If VocaSafe changes its phone number, headquarters address, or primary alert emails, you can update them instantly in one central place:
+If Vocasafe changes its phone number, headquarters address, or primary alert emails, you can update them instantly in one central place:
 
 1. **Config File:** In the codebase, contact details are configured in the Navbar (`components/layout/Navbar.tsx`) and Footer (`components/layout/Footer.tsx`) components, and read server-side from environment variables.
 2. **Target Variables:**
@@ -163,4 +163,4 @@ SANITY_API_TOKEN=skyour_sanity_write_token
 If you ever run the site locally for development, copy the variables above into a file named `.env.local` in the root folder, and start the local compiler using `npm run dev`.
 
 ---
-*Developed by Cysparks Technologies for VocaSafe Watch™ Website Launch.*
+*Developed by Cysparks Technologies for Vocasafe Watch™ Website Launch.*

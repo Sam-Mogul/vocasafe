@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | VocaSafe Watch™",
-  description: "Read the VocaSafe Watch™ Privacy Policy. Learn about our commitment to HIPAA compliance, data encryption, and protecting user and children's information.",
+  title: "Privacy Policy | Vocasafe Watch™",
+  description: "Read the Vocasafe Watch™ Privacy Policy. Learn about our commitment to HIPAA compliance, data encryption, and protecting user and children's information.",
   alternates: {
     canonical: "https://www.vocasafewatch.net/privacy-policy",
   },
@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-xl font-bold text-primary-navy">Introduction</h2>
             <div className="w-10 h-1 bg-accent-orange rounded-full" />
             <p>
-              VocaSafe Watch™ ("we," "us," or "our") respects the privacy of our visitors, waitlist members, and co-design participants. This Privacy Policy describes how we handle information collected through our website, forms, and file upload systems.
+              Vocasafe Watch™ ("we," "us," or "our") respects the privacy of our visitors, waitlist members, and co-design participants. This Privacy Policy describes how we handle information collected through our website, forms, and file upload systems.
             </p>
           </div>
 
@@ -49,7 +49,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-xl font-bold text-primary-navy">Biometric & GPS Safety Data</h2>
             <div className="w-10 h-1 bg-accent-orange rounded-full" />
             <p>
-              Please note that during our pre-order waitlist phase, no continuous GPS tracking or biometric vitals sensor diagnostics are active on this website. Our planned mobile caregiver apps and hardware services will operate strictly on a **HIPAA-compliant, end-to-end encrypted** database, and will require explicit guardian opt-in before any tracking commences.
+              Please note that during our pre-order waitlist phase, no continuous GPS tracking or biometric vitals sensor diagnostics are active on this website. Our planned mobile caregiver apps and hardware services will operate strictly on a <strong className="font-bold text-gray-800">HIPAA-compliant, end-to-end encrypted</strong> database, and will require explicit guardian opt-in before any tracking commences.
             </p>
           </div>
 

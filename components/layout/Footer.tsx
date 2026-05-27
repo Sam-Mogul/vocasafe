@@ -1,14 +1,27 @@
-"use client";
+﻿"use client";
 
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Mail, Phone, MapPin, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    const bbb = document.createElement("script");
+    bbb.type = "text/javascript";
+    bbb.async = true;
+    bbb.src = "https://seal-boston.bbb.org/v3/seals/blue-seal-293-61-bbb-569666.js";
+    const s = document.getElementsByTagName("script")[0];
+    if (s && s.parentNode) {
+      s.parentNode.insertBefore(bbb, s);
+    } else {
+      document.head.appendChild(bbb);
+    }
+  }, []);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,250 +55,151 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-primary-navy text-white pt-16 pb-8 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        {/* Footer Top: Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
-          
-          {/* Column 1: Brand & Contact Info */}
-          <div className="lg:col-span-4 space-y-6">
+    <footer className="bg-[#121F36] text-white pt-16 pb-8 border-t border-white/5 font-sans">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        {/* Subscribe Section matching Screenshot 5 */}
+        <div className="space-y-4 text-left">
+          <h3 className="text-xl font-sans font-bold uppercase tracking-widest text-[#E95F21]">
+            Subscribe
+          </h3>
+          <p className="text-xs sm:text-sm text-white font-semibold">
+            Join our community of caregivers, therapists, and innovators working to make communication accessible to everyone.
+          </p>
+          <p className="text-xs text-white/80 font-light">
+            Subscribe to receive updates on product development, early access opportunities, and stories from families using assistive technology to change lives.
+          </p>
+
+          {/* Form */}
+          <form onSubmit={handleSubscribe} className="space-y-4 pt-2">
             <div>
-              <span className="font-display font-bold text-xl uppercase tracking-widest text-accent-orange">
-                VocaSafe Watch™
-              </span>
-              <p className="mt-3 text-xs text-white/70 font-light leading-relaxed max-w-sm">
-                AI-powered, waterproof assistive smartwatch combining symbol-based AAC communication with real-time GPS safety tracking to empower independence.
+              <label htmlFor="newsletter-email" className="block text-[11px] font-bold text-white uppercase tracking-wider mb-2">
+                Email *
+              </label>
+              <input
+                id="newsletter-email"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full bg-[#121F36] border border-white rounded-[6px] py-3 px-4 text-xs text-white placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange transition-all"
+              />
+            </div>
+
+            <div className="flex items-start gap-2.5">
+              <input
+                id="newsletter-consent"
+                type="checkbox"
+                checked={consent}
+                onChange={(e) => setConsent(e.target.checked)}
+                className="mt-0.5 rounded border-white/20 bg-white/10 text-accent-orange focus:ring-accent-orange cursor-pointer w-4 h-4"
+              />
+              <label htmlFor="newsletter-consent" className="text-xs text-white/70 select-none cursor-pointer leading-tight">
+                Yes, subscribe me to your newsletter.
+              </label>
+            </div>
+
+            {/* Flat Submit Button */}
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="w-full py-3.5 bg-transparent border border-white hover:bg-white hover:text-[#121F36] disabled:border-gray-500 disabled:text-gray-500 transition-all rounded-[6px] text-xs font-bold uppercase tracking-wider text-white shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              {status === "loading" ? (
+                <>
+                  <Loader2 size={12} className="animate-spin" />
+                  <span>Submitting...</span>
+                </>
+              ) : (
+                <span>SUBMIT</span>
+              )}
+            </button>
+
+            {status === "success" && (
+              <p className="text-xs text-green-400 font-medium bg-green-950/20 border border-green-500/30 rounded py-1.5 px-3">
+                ✓ Successfully subscribed to our newsletter!
               </p>
-            </div>
-            
-            <div className="space-y-3.5 text-xs text-white/80 font-light">
-              <a
-                href="mailto:info@vocasafewatch.net"
-                className="flex items-center gap-2.5 hover:text-accent-light transition-colors"
-              >
-                <Mail size={16} className="text-accent-orange flex-shrink-0" />
-                <span>info@vocasafewatch.net</span>
-              </a>
-              <a
-                href="tel:+19786015097"
-                className="flex items-center gap-2.5 hover:text-accent-light transition-colors"
-              >
-                <Phone size={16} className="text-accent-orange flex-shrink-0" />
-                <span>+1 (978) 601-5097</span>
-              </a>
-              <div className="flex items-start gap-2.5">
-                <MapPin size={16} className="text-accent-orange flex-shrink-0 mt-0.5" />
-                <span>
-                  165 Middlesex Ave, #1093<br />
-                  Somerville, MA 02145<br />
-                  United States
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Column 2: Navigation Links */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="font-semibold text-xs uppercase tracking-widest text-accent-orange">
-              Explore
-            </h4>
-            <ul className="space-y-2.5 text-xs font-light text-white/85">
-              <li>
-                <Link href="/" className="hover:text-accent-light transition-colors">Home</Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-accent-light transition-colors">About</Link>
-              </li>
-              <li>
-                <Link href="/features" className="hover:text-accent-light transition-colors">Product Features</Link>
-              </li>
-              <li>
-                <Link href="/impact" className="hover:text-accent-light transition-colors">Impact</Link>
-              </li>
-              <li>
-                <Link href="/contact-us" className="hover:text-accent-light transition-colors">Contact Us</Link>
-              </li>
-              <li>
-                <Link href="/resources" className="hover:text-accent-light transition-colors">Resources</Link>
-              </li>
-              <li>
-                <Link href="/crowdfunding" className="hover:text-accent-light transition-colors">Crowdfunding</Link>
-              </li>
-              <li>
-                <Link href="/co-design" className="hover:text-accent-light transition-colors">Co-Design</Link>
-              </li>
-              <li>
-                <Link href="/shareyourvoice" className="hover:text-accent-light transition-colors">Share Your Voice</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Legal & Categories */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="font-semibold text-xs uppercase tracking-widest text-accent-orange">
-              Legal & Insights
-            </h4>
-            <ul className="space-y-2.5 text-xs font-light text-white/85">
-              <li>
-                <Link href="/accessibility-statement" className="hover:text-accent-light transition-colors">Accessibility Statement</Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy" className="hover:text-accent-light transition-colors">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link href="/terms-of-sale" className="hover:text-accent-light transition-colors">Terms of Sale</Link>
-              </li>
-              <li>
-                <Link href="/blog/categories/company-insights" className="hover:text-accent-light transition-colors">Company Insights</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: Newsletter Box */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="font-semibold text-xs uppercase tracking-widest text-accent-orange">
-              Join Our Community
-            </h4>
-            <p className="text-[11px] text-white/70 leading-relaxed font-light">
-              Join our community of caregivers, therapists, and innovators working to make communication accessible to everyone.
-            </p>
-            <p className="text-[10px] text-white/50 leading-relaxed font-light">
-              Subscribe to receive updates on product development, early access opportunities, and stories from families.
-            </p>
-
-            <form onSubmit={handleSubscribe} className="space-y-2.5 mt-2">
-              <div>
-                <label htmlFor="newsletter-email" className="sr-only">Email address</label>
-                <input
-                  id="newsletter-email"
-                  type="email"
-                  required
-                  placeholder="Enter your email*"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white/10 border border-white/20 rounded py-2 px-3 text-xs text-white placeholder-white/50 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange transition-all"
-                />
-              </div>
-
-              <div className="flex items-start gap-2">
-                <input
-                  id="newsletter-consent"
-                  type="checkbox"
-                  checked={consent}
-                  onChange={(e) => setConsent(e.target.checked)}
-                  className="mt-0.5 rounded border-white/25 bg-white/10 text-accent-orange focus:ring-accent-orange cursor-pointer"
-                />
-                <label htmlFor="newsletter-consent" className="text-[9px] text-white/60 leading-tight select-none cursor-pointer">
-                  Yes, subscribe me to your newsletter.
-                </label>
-              </div>
-
-              <button
-                type="submit"
-                disabled={status === "loading"}
-                className="w-full py-2 bg-accent-orange hover:bg-orange-600 active:bg-orange-700 disabled:bg-gray-600 transition-colors rounded text-xs font-bold uppercase tracking-wider text-white shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
-              >
-                {status === "loading" ? (
-                  <>
-                    <Loader2 size={12} className="animate-spin" />
-                    <span>Submitting...</span>
-                  </>
-                ) : (
-                  <span>Submit</span>
-                )}
-              </button>
-
-              {status === "success" && (
-                <p className="text-[10px] text-green-400 font-medium">
-                  ✓ Successfully subscribed to our newsletter!
-                </p>
-              )}
-              {status === "error" && (
-                <p className="text-[10px] text-red-400 font-medium">
-                  ✗ {errorMessage}
-                </p>
-              )}
-            </form>
-          </div>
-
+            )}
+            {status === "error" && (
+              <p className="text-xs text-red-400 font-medium bg-red-950/20 border border-red-500/30 rounded py-1.5 px-3">
+                ✗ {errorMessage}
+              </p>
+            )}
+          </form>
         </div>
 
-        {/* Footer Bottom: Socials, Copyright, Disclaimer */}
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
+        {/* Explore Links section for SEO and navigation */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-8 border-t border-white/10 text-xs text-white/70 font-light">
+          <div className="space-y-2">
+            <h4 className="font-bold text-white uppercase tracking-wider">Explore</h4>
+            <ul className="space-y-1.5">
+              <li><Link href="/" className="hover:underline">Home</Link></li>
+              <li><Link href="/about" className="hover:underline">About</Link></li>
+              <li><Link href="/features" className="hover:underline">Product Features</Link></li>
+              <li><Link href="/impact" className="hover:underline">Impact</Link></li>
+            </ul>
+          </div>
+          <div className="space-y-2">
+            <h4 className="font-bold text-white uppercase tracking-wider">Co-Design</h4>
+            <ul className="space-y-1.5">
+              <li><Link href="/co-design" className="hover:underline">Co-Design</Link></li>
+              <li><Link href="/crowdfunding" className="hover:underline">Crowdfunding</Link></li>
+              <li><Link href="/shareyourvoice" className="hover:underline">Share Your Voice</Link></li>
+              <li><Link href="/contact-us" className="hover:underline">Contact Us</Link></li>
+            </ul>
+          </div>
+          <div className="space-y-2 col-span-2 sm:col-span-1">
+            <h4 className="font-bold text-white uppercase tracking-wider">Legal</h4>
+            <ul className="space-y-1.5">
+              <li><Link href="/accessibility-statement" className="hover:underline">Accessibility Statement</Link></li>
+              <li><Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
+              <li><Link href="/terms-of-sale" className="hover:underline">Terms of Sale</Link></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Follow & Socials section matching Screenshot 5 */}
+        <div className="space-y-3 pt-6 border-t border-white/10">
+          <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+            Follow
+          </h4>
+          <div className="flex items-center gap-5">
             {/* TikTok */}
-            <a
-              href="https://www.tiktok.com/@vocasafewatch"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/65 hover:text-white transition-colors"
-              aria-label="Follow VocaSafe Watch on TikTok"
-            >
-              <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24">
-                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.94-1.74-.22-.2-.42-.43-.61-.67-.02 2.44-.01 4.88-.01 7.32-.06 2.06-.69 4.14-2.07 5.67-1.58 1.83-4.04 2.82-6.49 2.68-2.6-.08-5.18-1.54-6.38-3.85-1.39-2.58-1.07-5.96.88-8.19 1.49-1.76 3.86-2.59 6.13-2.3v4.06c-1.12-.13-2.31.25-3.04 1.14-.68.8-.75 2-.22 2.89.58.98 1.83 1.47 2.92 1.19.8-.18 1.4-.87 1.51-1.68.07-1.18.04-2.36.05-3.54V0z" />
-              </svg>
+            <a href="https://tiktok.com/@vocasafe" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#E95F21] transition-colors" aria-label="TikTok">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V0h5v4a5 5 0 0 1-5 5v3a5.002 5.002 0 0 0-4-1z"/></svg>
             </a>
             {/* Instagram */}
-            <a
-              href="https://www.instagram.com/vocasafewatch"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/65 hover:text-white transition-colors"
-              aria-label="Follow VocaSafe Watch on Instagram"
-            >
-              <svg className="w-[18px] h-[18px] stroke-current fill-none stroke-2" viewBox="0 0 24 24">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
+            <a href="https://instagram.com/vocasafewatch" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#E95F21] transition-colors" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </a>
             {/* Facebook */}
-            <a
-              href="https://www.facebook.com/vocasafewatch"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/65 hover:text-white transition-colors"
-              aria-label="Follow VocaSafe Watch on Facebook"
-            >
-              <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24">
-                <path d="M9 8H7v3h2v9h3v-9h3.6L16 8h-4V6c0-.5.5-1 1-1h3V2h-3c-3 0-5 2-5 5v1z" />
-              </svg>
+            <a href="https://facebook.com/vocasafewatch" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#E95F21] transition-colors" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             </a>
-            {/* X (formerly Twitter) */}
-            <a
-              href="https://x.com/vocasafe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/65 hover:text-white transition-colors"
-              aria-label="Follow VocaSafe Watch on X"
-            >
-              <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
+            {/* Twitter / X */}
+            <a href="https://twitter.com/vocasafe" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#E95F21] transition-colors" aria-label="X (Twitter)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
             </a>
             {/* LinkedIn */}
-            <a
-              href="https://www.linkedin.com/company/vocasafe-watch"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/65 hover:text-white transition-colors"
-              aria-label="Follow VocaSafe Watch on LinkedIn"
-            >
-              <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
+            <a href="https://linkedin.com/company/vocasafe-watch" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#E95F21] transition-colors" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
           </div>
+        </div>
 
-          {/* Legal Rights Block */}
-          <div className="text-center md:text-right space-y-1">
-            <p className="text-[10px] text-white/50">
-              © 2026 by VocaSafe Watch™ All rights reserved.
+        {/* Copyright and Disclaimer matching Screenshot 5 */}
+        <div className="pt-6 border-t border-white/15 flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+          <div className="text-center md:text-left space-y-2">
+            <p className="text-[11px] text-white/60">
+              © 2026 by Vocasafe Watch™. All rights reserved.
             </p>
-            <p className="text-[9px] text-white/40 max-w-md leading-normal font-light">
-              Disclaimer: VocaSafe Watch™ is currently in development. Features and functionality described are subject to change.
+            <p className="text-[10px] text-white/45 font-light leading-normal max-w-2xl">
+              Vocasafe Watch™ is currently in development. Features and functionality described are subject to change.
             </p>
+          </div>
+          {/* BBB Seal */}
+          <div className="flex-shrink-0 flex items-center justify-center min-h-[61px] min-w-[293px]">
+            {React.createElement('bbbseal', { className: 'bbbseal bbb_1_61_293' })}
           </div>
         </div>
 

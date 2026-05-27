@@ -1,12 +1,26 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Send, Upload, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import PhoneInput, { getDialCode } from "@/components/ui/PhoneInput";
+import { isValidEmail } from "@/lib/utils";
+
+const INQUIRY_OPTIONS = [
+  "General Inquiry",
+  "Join waitlist",
+  "Request Pitch Deck",
+  "Media / Press",
+  "Product Support",
+  "Investor Relations",
+  "Career Opportunities",
+  "Other"
+];
 
 function ContactFormInner() {
   const searchParams = useSearchParams();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [formData, setFormData] = useState({
     firstName: "",
@@ -14,13 +28,14 @@ function ContactFormInner() {
     email: "",
     phone: "",
     organization: "",
-    inquiryType: "General Inquiry",
     message: "",
     consent: false,
   });
 
+  const [countryCode, setCountryCode] = useState("US");
+
+  const [selectedTypes, setSelectedTypes] = useState<string[]>(["General Inquiry"]);
   const [file, setFile] = useState<File | null>(null);
-  const [fileUploadUrl, setFileUploadUrl] = useState<string | null>(null);
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errMessage, setErrMessage] = useState("");
 
@@ -28,21 +43,28 @@ function ContactFormInner() {
   useEffect(() => {
     const typeParam = searchParams.get("type");
     if (typeParam) {
-      const allowedTypes = [
-        "General Inquiry",
-        "Join waitlist",
-        "Request Pitch Deck",
-        "Media/Press",
-        "Product Support",
-        "Investor Relations",
-        "Career Opportunities",
-        "Other"
-      ];
-      if (allowedTypes.includes(typeParam)) {
-        setFormData((prev) => ({ ...prev, inquiryType: typeParam }));
+      // Handle custom spacer match e.g. "Join waitlist"
+      const decodedParam = decodeURIComponent(typeParam);
+      const matches = INQUIRY_OPTIONS.find(
+        (opt) => opt.toLowerCase().trim() === decodedParam.toLowerCase().trim()
+      );
+      if (matches) {
+        setSelectedTypes([matches]);
       }
     }
   }, [searchParams]);
+
+  const handleCheckboxChange = (type: string) => {
+    setSelectedTypes((prev) => {
+      if (prev.includes(type)) {
+        // Don't allow empty selections
+        if (prev.length === 1) return prev;
+        return prev.filter((t) => t !== type);
+      } else {
+        return [...prev, type];
+      }
+    });
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -66,6 +88,11 @@ function ContactFormInner() {
       setErrMessage("Please fill in all required fields.");
       return;
     }
+    if (!isValidEmail(formData.email)) {
+      setFormStatus("error");
+      setErrMessage("Please enter a valid email address.");
+      return;
+    }
     if (!formData.consent) {
       setFormStatus("error");
       setErrMessage("You must consent to data storage.");
@@ -78,7 +105,7 @@ function ContactFormInner() {
     try {
       let finalAttachmentUrl = "";
 
-      // Step 1: Upload file to Supabase if present
+      // Step 1: Upload file if present
       if (file) {
         const uploadData = new FormData();
         uploadData.append("file", file);
@@ -100,12 +127,19 @@ function ContactFormInner() {
         finalAttachmentUrl = uploadResult.fileUrl || "";
       }
 
-      // Step 2: Post form data to contact API
+      // Step 2: Post data to contact API
       const contactRes = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formData,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone ? `${getDialCode(countryCode)} ${formData.phone}` : "",
+          organization: formData.organization,
+          inquiryType: selectedTypes.join(", "), // Join selected types for database rows
+          message: formData.message,
+          consent: formData.consent,
           attachmentUrl: finalAttachmentUrl,
         }),
       });
@@ -122,12 +156,12 @@ function ContactFormInner() {
         email: "",
         phone: "",
         organization: "",
-        inquiryType: "General Inquiry",
         message: "",
         consent: false,
       });
+      setSelectedTypes(["General Inquiry"]);
       setFile(null);
-      setFileUploadUrl(null);
+      if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (err: any) {
       setFormStatus("error");
       setErrMessage(err.message || "An unexpected error occurred. Please try again.");
@@ -135,40 +169,41 @@ function ContactFormInner() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white border border-gray-100 p-8 rounded-2xl shadow-sm space-y-6">
-      <h2 className="text-xl font-bold text-primary-navy">
-        Submit An Inquiry
-      </h2>
-      <div className="w-10 h-1 bg-accent-orange rounded-full -mt-2" />
+    <form onSubmit={handleSubmit} className="bg-white border border-gray-200/80 p-6 sm:p-8 rounded-[18px] shadow-sm space-y-6">
+      
+      {/* Centered Form Header */}
+      <div className="text-center pb-4 border-b border-gray-100">
+        <h3 className="text-[17px] font-sans font-bold text-gray-800 leading-snug">
+          Have questions? Want to get involved? We'd love to hear from you.
+        </h3>
+      </div>
 
       {/* Grid: First and Last Name */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="form-first" className="block text-xs font-bold text-primary-navy uppercase tracking-wider mb-2">
-            First Name*
+          <label htmlFor="form-first" className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+            First name *
           </label>
           <input
             id="form-first"
             type="text"
             required
-            placeholder="Enter first name"
             value={formData.firstName}
             onChange={(e) => setFormData((prev) => ({ ...prev, firstName: e.target.value }))}
-            className="w-full bg-white border border-gray-200 rounded-lg py-2.5 px-3.5 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange"
+            className="w-full bg-[#F5F5F5] border border-gray-200/80 rounded-[8px] py-2.5 px-3.5 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange transition-all"
           />
         </div>
         <div>
-          <label htmlFor="form-last" className="block text-xs font-bold text-primary-navy uppercase tracking-wider mb-2">
-            Last Name*
+          <label htmlFor="form-last" className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+            Last name *
           </label>
           <input
             id="form-last"
             type="text"
             required
-            placeholder="Enter last name"
             value={formData.lastName}
             onChange={(e) => setFormData((prev) => ({ ...prev, lastName: e.target.value }))}
-            className="w-full bg-white border border-gray-200 rounded-lg py-2.5 px-3.5 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange"
+            className="w-full bg-[#F5F5F5] border border-gray-200/80 rounded-[8px] py-2.5 px-3.5 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange transition-all"
           />
         </div>
       </div>
@@ -176,121 +211,123 @@ function ContactFormInner() {
       {/* Grid: Email and Phone */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="form-email" className="block text-xs font-bold text-primary-navy uppercase tracking-wider mb-2">
-            Email Address*
+          <label htmlFor="form-email" className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+            Email *
           </label>
           <input
             id="form-email"
             type="email"
             required
-            placeholder="Enter email address"
             value={formData.email}
             onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
-            className="w-full bg-white border border-gray-200 rounded-lg py-2.5 px-3.5 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange"
+            className="w-full bg-[#F5F5F5] border border-gray-200/80 rounded-[8px] py-2.5 px-3.5 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange transition-all"
           />
         </div>
         <div>
-          <label htmlFor="form-phone" className="block text-xs font-bold text-primary-navy uppercase tracking-wider mb-2">
-            Phone Number <span className="text-gray-400 font-light">(Optional)</span>
+          <label htmlFor="form-phone" className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+            Phone
           </label>
-          <input
+          <PhoneInput
             id="form-phone"
-            type="tel"
-            placeholder="Enter phone number"
             value={formData.phone}
-            onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
-            className="w-full bg-white border border-gray-200 rounded-lg py-2.5 px-3.5 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange"
+            onChange={(val) => setFormData((prev) => ({ ...prev, phone: val }))}
+            countryCode={countryCode}
+            onChangeCountryCode={setCountryCode}
+            placeholder="Phone number"
+            inputClassName="bg-[#F5F5F5] border-gray-200/80"
           />
         </div>
       </div>
 
-      {/* Grid: Organization and Inquiry Type */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="form-org" className="block text-xs font-bold text-primary-navy uppercase tracking-wider mb-2">
-            Organization <span className="text-gray-400 font-light">(Optional)</span>
-          </label>
-          <input
-            id="form-org"
-            type="text"
-            placeholder="Enter school/clinic name"
-            value={formData.organization}
-            onChange={(e) => setFormData((prev) => ({ ...prev, organization: e.target.value }))}
-            className="w-full bg-white border border-gray-200 rounded-lg py-2.5 px-3.5 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange"
-          />
-        </div>
-        <div>
-          <label htmlFor="form-type" className="block text-xs font-bold text-primary-navy uppercase tracking-wider mb-2">
-            Inquiry Type*
-          </label>
-          <select
-            id="form-type"
-            value={formData.inquiryType}
-            onChange={(e) => setFormData((prev) => ({ ...prev, inquiryType: e.target.value }))}
-            className="w-full bg-white border border-gray-200 rounded-lg py-2.5 px-3.5 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange"
-          >
-            <option value="General Inquiry">General Inquiry</option>
-            <option value="Join waitlist">Join waitlist</option>
-            <option value="Request Pitch Deck">Request Pitch Deck</option>
-            <option value="Media/Press">Media/Press</option>
-            <option value="Product Support">Product Support</option>
-            <option value="Investor Relations">Investor Relations</option>
-            <option value="Career Opportunities">Career Opportunities</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-      </div>
-
-      {/* File Upload Zone */}
+      {/* Organization */}
       <div>
-        <label htmlFor="form-file" className="block text-xs font-bold text-primary-navy uppercase tracking-wider mb-2">
-          File Attachment <span className="text-gray-400 font-light">(Optional, PDF/Images, Max 10MB)</span>
+        <label htmlFor="form-org" className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+          Organization
         </label>
-        <div className="relative border-2 border-dashed border-gray-200 hover:border-accent-orange rounded-xl p-6 flex flex-col items-center justify-center bg-gray-50/50 hover:bg-gray-50 transition-all group">
+        <input
+          id="form-org"
+          type="text"
+          value={formData.organization}
+          onChange={(e) => setFormData((prev) => ({ ...prev, organization: e.target.value }))}
+          className="w-full bg-[#F5F5F5] border border-gray-200/80 rounded-[8px] py-2.5 px-3.5 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange transition-all"
+        />
+      </div>
+
+      {/* Flat Orange Block Upload File Button */}
+      <div className="flex flex-col items-start pt-2">
+        <div className="relative">
           <input
+            ref={fileInputRef}
             id="form-file"
             type="file"
             onChange={handleFileChange}
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
           />
-          <Upload size={24} className="text-gray-400 group-hover:text-accent-orange mb-2 transition-colors" />
-          <span className="text-xs font-medium text-gray-600">
-            {file ? `Selected file: ${file.name}` : "Click or Drag to upload file"}
+          <div className="bg-[#E95F21] hover:bg-orange-600 active:scale-[0.98] transition-all text-white font-extrabold rounded-[6px] py-2.5 px-6 text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-sm cursor-pointer select-none">
+            <span>+ Upload File</span>
+          </div>
+        </div>
+        {file && (
+          <span className="text-xs font-medium text-emerald-600 mt-2 bg-emerald-50 border border-emerald-100 rounded px-2.5 py-1">
+            ✓ Attached: {file.name} ({(file.size / (1024 * 1024)).toFixed(2)} MB)
           </span>
-          <span className="text-[10px] text-gray-400 mt-1">
-            {file ? `${(file.size / (1024 * 1024)).toFixed(2)} MB` : "PDF, DOCX, PNG, JPG up to 10MB"}
-          </span>
+        )}
+      </div>
+
+      {/* Inquiry Type Checkboxes */}
+      <div className="space-y-3">
+        <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider border-t border-gray-100 pt-4">
+          Inquiry Type
+        </label>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {INQUIRY_OPTIONS.map((option) => {
+            const isChecked = selectedTypes.includes(option);
+            return (
+              <label
+                key={option}
+                className="flex items-center gap-3 text-sm text-gray-600 cursor-pointer select-none py-1 hover:text-primary-navy"
+              >
+                <input
+                  type="checkbox"
+                  checked={isChecked}
+                  onChange={() => handleCheckboxChange(option)}
+                  className="rounded border-gray-300 text-accent-orange focus:ring-accent-orange cursor-pointer w-4 h-4"
+                />
+                <span>{option}</span>
+              </label>
+            );
+          })}
         </div>
       </div>
 
-      {/* Message box */}
-      <div>
-        <label htmlFor="form-message" className="block text-xs font-bold text-primary-navy uppercase tracking-wider mb-2">
-          Message <span className="text-gray-400 font-light">(Optional)</span>
+      {/* Message textarea */}
+      <div className="space-y-2">
+        <label htmlFor="form-message" className="block text-xs font-bold text-gray-700 uppercase tracking-wider border-t border-gray-100 pt-4">
+          Message
         </label>
         <textarea
           id="form-message"
           rows={5}
-          placeholder="How can we help? Explain your interest in our smartwatch, classroom settings, or pre-seed rounds..."
+          placeholder="Please share details about your inquiry. The more information you provide, the better we can assist"
           value={formData.message}
           onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
-          className="w-full bg-white border border-gray-200 rounded-lg py-2.5 px-3.5 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange"
+          className="w-full bg-white border border-gray-200 rounded-[8px] py-2.5 px-3.5 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange transition-all"
         />
       </div>
 
       {/* Consent Checkbox */}
-      <div className="flex items-start gap-2.5">
+      <div className="flex items-start gap-2.5 pt-2">
         <input
           id="form-consent"
           type="checkbox"
           required
           checked={formData.consent}
           onChange={(e) => setFormData((prev) => ({ ...prev, consent: e.target.checked }))}
-          className="mt-0.5 rounded border-gray-300 text-accent-orange focus:ring-accent-orange cursor-pointer"
+          className="mt-0.5 rounded border-gray-300 text-accent-orange focus:ring-accent-orange cursor-pointer w-4 h-4"
         />
         <label htmlFor="form-consent" className="text-xs text-gray-500 select-none cursor-pointer">
-          I consent to VocaSafe storing my information for the purpose of responding to my inquiry. View our{" "}
+          I consent to Vocasafe storing my information for the purpose of responding to my inquiry. View our{" "}
           <Link href="/privacy-policy" className="text-accent-orange font-semibold hover:underline">
             Privacy Policy
           </Link>
@@ -302,7 +339,7 @@ function ContactFormInner() {
       <button
         type="submit"
         disabled={formStatus === "loading"}
-        className="w-full py-4 bg-accent-orange hover:bg-orange-600 disabled:bg-gray-400 text-white font-bold rounded-xl uppercase tracking-wider text-xs shadow-sm flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+        className="w-full py-3.5 bg-[#121F36] hover:bg-slate-800 disabled:bg-gray-400 text-white font-extrabold rounded-[8px] uppercase tracking-wider text-xs shadow-sm flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
       >
         {formStatus === "loading" ? (
           <>
@@ -317,20 +354,19 @@ function ContactFormInner() {
         )}
       </button>
 
-      {/* Success Alert */}
+      {/* Alerts */}
       {formStatus === "success" && (
-        <div className="bg-green-50 border border-green-200 text-green-700 p-4 rounded-xl flex items-start gap-3">
+        <div className="bg-green-50 border border-green-200 text-green-700 p-4 rounded-[8px] flex items-start gap-3">
           <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-green-500 mt-0.5" />
           <div className="text-xs">
             <strong className="block font-bold">Inquiry Submitted Successfully!</strong>
-            Your note has been received by Catherine Katambo and the engineering team. We will contact you soon.
+            Your note has been received by the Vocasafe Watch team. We will contact you soon.
           </div>
         </div>
       )}
 
-      {/* Error Alert */}
       {formStatus === "error" && (
-        <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-xl flex items-start gap-3">
+        <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-[8px] flex items-start gap-3">
           <AlertCircle className="w-5 h-5 flex-shrink-0 text-red-500 mt-0.5" />
           <div className="text-xs">
             <strong className="block font-bold">Submission Error</strong>
@@ -345,7 +381,7 @@ function ContactFormInner() {
 export default function ContactForm() {
   return (
     <Suspense fallback={
-      <div className="bg-white border border-gray-100 p-8 rounded-2xl shadow-sm flex items-center justify-center py-20">
+      <div className="bg-white border border-gray-200/80 p-8 rounded-[18px] shadow-sm flex items-center justify-center py-20">
         <Loader2 className="animate-spin text-accent-orange w-8 h-8" />
       </div>
     }>

@@ -1,28 +1,28 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
+import { Sora } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Script from "next/script";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-plus-jakarta",
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-sora",
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "VocaSafe Watch™ | Smart AAC & Safety Watch for Communication and Care",
-    template: "%s | VocaSafe Watch™",
+    default: "Vocasafe Watch™ | Smart AAC & Safety Watch for Communication and Care",
+    template: "%s | Vocasafe Watch™",
   },
-  description: "VocaSafe Watch™ combines Augmentative and Alternative Communication (AAC) tools with real-time safety tracking. Empowering individuals with communication challenges to connect, stay safe, and live more independently.",
+  description: "Vocasafe Watch™ combines Augmentative and Alternative Communication (AAC) tools with real-time safety tracking. Empowering individuals with communication challenges to connect, stay safe, and live more independently.",
+  icons: {
+    icon: "/images/logo-icon.png",
+    shortcut: "/images/logo-icon.png",
+    apple: "/images/logo-icon.png",
+  },
   alternates: {
     canonical: "https://www.vocasafewatch.net",
   },
@@ -30,10 +30,10 @@ export const metadata: Metadata = {
     google: "E5RrYfiRYut8ZkwWCxxzygIjQ6BRk5KXEcx_P2jyNrc",
   },
   openGraph: {
-    title: "VocaSafe Watch™ | Smart AAC & Safety Watch for Communication and Care",
-    description: "VocaSafe Watch™ combines Augmentative and Alternative Communication (AAC) tools with real-time safety tracking.",
+    title: "Vocasafe Watch™ | Smart AAC & Safety Watch for Communication and Care",
+    description: "Vocasafe Watch™ combines Augmentative and Alternative Communication (AAC) tools with real-time safety tracking.",
     url: "https://www.vocasafewatch.net",
-    siteName: "VocaSafe Watch™",
+    siteName: "Vocasafe Watch™",
     type: "website",
   },
   twitter: {
@@ -49,8 +49,8 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <html lang="en" className={`${plusJakartaSans.variable} ${dmSans.variable} h-full antialiased`}>
-      <head>
+    <html lang="en" className={`${sora.variable} h-full antialiased`} suppressHydrationWarning>
+      <body className="flex min-h-full flex-col font-sans bg-white text-neutral-dark" suppressHydrationWarning>
         {gaId && (
           <>
             <Script
@@ -69,10 +69,8 @@ export default function RootLayout({
             </Script>
           </>
         )}
-      </head>
-      <body className="flex min-h-full flex-col font-sans bg-white text-neutral-dark">
         <Navbar />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow pt-[58px]">{children}</main>
         <Footer />
       </body>
     </html>

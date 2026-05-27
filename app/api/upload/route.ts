@@ -1,17 +1,24 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { Resend } from "resend";
+import { sanitizeInput, isValidEmail } from "@/lib/utils";
 
 export const runtime = "nodejs";
 
 export async function POST(req: Request) {
   try {
     const formData = await req.formData();
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
-    const phone = (formData.get("phone") as string) || "";
-    const organization = (formData.get("organization") as string) || "";
-    const message = (formData.get("message") as string) || "";
+    const rawName = formData.get("name") as string;
+    const rawEmail = formData.get("email") as string;
+    const rawPhone = (formData.get("phone") as string) || "";
+    const rawOrganization = (formData.get("organization") as string) || "";
+    const rawMessage = (formData.get("message") as string) || "";
+
+    const name = sanitizeInput(rawName);
+    const email = sanitizeInput(rawEmail);
+    const phone = sanitizeInput(rawPhone);
+    const organization = sanitizeInput(rawOrganization);
+    const message = sanitizeInput(rawMessage);
 
     const file = formData.get("file") as File | null;
     const file1 = formData.get("file1") as File | null;
@@ -19,6 +26,10 @@ export async function POST(req: Request) {
 
     if (!email) {
       return NextResponse.json({ error: "Submitter email is required." }, { status: 400 });
+    }
+
+    if (!isValidEmail(email)) {
+      return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
     }
 
     const uploadedUrls: string[] = [];
@@ -29,8 +40,7 @@ export async function POST(req: Request) {
       const sanitizedName = f.name.replace(/[^a-zA-Z0-9]/g, "_");
       const filePath = `uploads/${prefix}_${Date.now()}_${sanitizedName}.${extension}`;
 
-      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-      const hasSupabase = supabaseUrl && process.env.SUPABASE_SERVICE_ROLE_KEY;
+      const hasSupabase = !!supabase;
 
       if (!hasSupabase) {
         console.warn(`⚠️ Supabase credentials missing. Generating a local mock URL for: ${f.name}`);
@@ -125,7 +135,7 @@ export async function POST(req: Request) {
             Secure Document Upload Alert
           </h2>
           <p style="font-size: 14px;">
-            A user has uploaded secure resource files to VocaSafe Watch™:
+            A user has uploaded secure resource files to Vocasafe Watch™:
           </p>
           <table style="width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px;">
             <tr>
@@ -161,15 +171,15 @@ export async function POST(req: Request) {
           </ul>
 
           <div style="margin-top: 30px; font-size: 9px; color: #9CA3AF; text-align: center; border-top: 1px solid #eee; padding-top: 12px;">
-            VocaSafe Storage Alert Operations Hub.
+            Vocasafe Storage Alert Operations Hub.
           </div>
         </div>
       `;
 
       await resend.emails.send({
-        from: `VocaSafe Alerts <${fromEmail}>`,
+        from: `Vocasafe Alerts <${fromEmail}>`,
         to: toEmails,
-        subject: `[VocaSafe Secure Upload] New Files from ${name || email}`,
+        subject: `[Vocasafe Secure Upload] New Files from ${name || email}`,
         html: emailHtml,
       });
     }

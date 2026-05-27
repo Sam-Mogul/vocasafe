@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { getPosts } from "@/lib/sanity";
 import BlogFeed from "./BlogFeed";
 
 export const metadata: Metadata = {
-  title: "Explore Communication Accessibility with VocaSafe Watch™ Blog",
-  description: "Discover how VocaSafe Watch™ is redefining communication accessibility with AI and multilingual design insights.",
+  title: "Explore Communication Accessibility with Vocasafe Watch™ Blog",
+  description: "Discover how Vocasafe Watch™ is redefining communication accessibility with AI and multilingual design insights.",
   alternates: {
     canonical: "https://www.vocasafewatch.net/blog",
   },
   openGraph: {
-    title: "Explore Communication Accessibility with VocaSafe Watch™ Blog",
-    description: "Discover how VocaSafe Watch™ is redefining communication accessibility with AI and multilingual design insights.",
+    title: "Explore Communication Accessibility with Vocasafe Watch™ Blog",
+    description: "Discover how Vocasafe Watch™ is redefining communication accessibility with AI and multilingual design insights.",
     url: "https://www.vocasafewatch.net/blog",
     siteName: "Vocasafewatch",
     images: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
         url: "https://www.vocasafewatch.net/images/og/f376fd_e5d956ac453942a9927f60674b069ce3~mv2.jpeg",
         width: 2500,
         height: 1330,
-        alt: "VocaSafe Watch Blog Feed",
+        alt: "Vocasafe Watch Blog Feed",
       },
     ],
     type: "website",

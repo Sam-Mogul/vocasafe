@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Handshake, TrendingUp, BarChart2, School, FileText, Calendar, Mail, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Partner with VocaSafe Watch™ | Collaborate in Assistive Technology Innovation",
-  description: "Join us in advancing communication accessibility. VocaSafe Watch™ partners with therapists, schools, clinics, and organizations to deliver cutting-edge AAC and safety technology that empowers real-world independence.",
+  title: "Partner with Vocasafe Watch™ | Collaborate in Assistive Technology Innovation",
+  description: "Join us in advancing communication accessibility. Vocasafe Watch™ partners with therapists, schools, clinics, and organizations to deliver cutting-edge AAC and safety technology that empowers real-world independence.",
   alternates: {
     canonical: "https://www.vocasafewatch.net/partner",
   },
   openGraph: {
-    title: "Partner with VocaSafe Watch™ | Collaborate in Assistive Technology Innovation",
-    description: "Join us in advancing communication accessibility. VocaSafe Watch™ partners with therapists, schools, clinics, and organizations to deliver cutting-edge AAC and safety technology that empowers real-world independence.",
+    title: "Partner with Vocasafe Watch™ | Collaborate in Assistive Technology Innovation",
+    description: "Join us in advancing communication accessibility. Vocasafe Watch™ partners with therapists, schools, clinics, and organizations to deliver cutting-edge AAC and safety technology that empowers real-world independence.",
     url: "https://www.vocasafewatch.net/partner",
     siteName: "Vocasafewatch",
     images: [
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
         url: "https://www.vocasafewatch.net/images/og/f376fd_e5d956ac453942a9927f60674b069ce3~mv2.jpeg",
         width: 2500,
         height: 1330,
-        alt: "VocaSafe Watch Investment & Partners",
+        alt: "Vocasafe Watch Investment & Partners",
       },
     ],
     type: "website",
@@ -29,17 +30,27 @@ export default function Partner() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* 1. Header Section */}
-      <section className="bg-gradient-to-br from-primary-navy to-slate-900 text-white py-16 lg:py-20 text-center relative">
+      <section className="relative bg-gradient-to-br from-primary-navy to-slate-900 text-white py-16 lg:py-20 text-center overflow-hidden">
+        {/* Background Image */}
+        <Image
+          src="/images/disp- vocasafe.webp"
+          alt="Vocasafe Partner"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-15"
+        />
+        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 space-y-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 space-y-4 relative z-10">
           <span className="text-accent-orange uppercase font-bold tracking-widest text-xs">
             B2B & Investor Relations
           </span>
-          <h1 className="text-4xl sm:text-5xl font-display font-bold">
+          <h1 className="text-4xl sm:text-5xl font-sans font-extrabold text-white">
             Partnering for Innovation and Inclusion
           </h1>
           <p className="text-base sm:text-lg text-white/80 font-light max-w-2xl mx-auto leading-relaxed">
-            Join VocaSafe Watch™ as a strategic investor, clinical researcher, distributor, or school pilot partner to reshape speech accessibility.
+            Join Vocasafe Watch™ as a strategic investor, clinical researcher, distributor, or school pilot partner to reshape speech accessibility.
           </p>
         </div>
       </section>
@@ -62,7 +73,7 @@ export default function Partner() {
               </div>
               <h3 className="text-lg font-bold text-primary-navy">Investment & Strategic Partnerships</h3>
               <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                VocaSafe is opening early pre-seed and strategic seed-round conversations to accelerate hardware certifications (IP68, FCC, CE), expand our patent-pending hardware designs, and scale the HIPAA-compliant cloud analytics dashboards.
+                Vocasafe is opening early pre-seed and strategic seed-round conversations to accelerate hardware certifications (IP68, FCC, CE), expand our patent-pending hardware designs, and scale the HIPAA-compliant cloud analytics dashboards.
               </p>
             </div>
             {/* Way 2 */}
@@ -92,7 +103,7 @@ export default function Partner() {
               </div>
               <h3 className="text-lg font-bold text-primary-navy">Institutional Field Pilots</h3>
               <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                Introduce VocaSafe Watch™ to your special education classrooms, private clinics, and community support centers. We provide heavy-duty clasp kits, sensory hardware settings, and custom SLP usage trackers.
+                Introduce Vocasafe Watch™ to your special education classrooms, private clinics, and community support centers. We provide heavy-duty clasp kits, sensory hardware settings, and custom SLP usage trackers.
               </p>
             </div>
           </div>
@@ -118,7 +129,7 @@ export default function Partner() {
               </span>
               <h3 className="text-lg font-bold text-primary-navy">Market Opportunity</h3>
               <p className="text-xs text-gray-500 font-light leading-relaxed">
-                The global Augmentative and Alternative Communication (AAC) market is projected to reach **$5.8 Billion by 2030**, expanding at a robust **CAGR of 8.2%**. Rapid growth in autism awareness, expanded developmental school budgets, and favorable Medicaid/insurance codes drive this demand.
+                The global Augmentative and Alternative Communication (AAC) market is projected to reach <strong className="font-bold text-gray-800">$5.8 Billion by 2030</strong>, expanding at a robust <strong className="font-bold text-gray-800">CAGR of 8.2%</strong>. Rapid growth in autism awareness, expanded developmental school budgets, and favorable Medicaid/insurance codes drive this demand.
               </p>
             </div>
 
@@ -128,7 +139,7 @@ export default function Partner() {
               </span>
               <h3 className="text-lg font-bold text-primary-navy">Competitive Advantage</h3>
               <p className="text-xs text-gray-500 font-light leading-relaxed">
-                VocaSafe is the first waterproof smartwatch created specifically to bridge symbol-based speech with critical parent tracking. Unlike standard tablet computers, it cannot be dropped, operates in playgrounds, and offers a non-stigmatizing, premium watch layout.
+                Vocasafe is the first waterproof smartwatch created specifically to bridge symbol-based speech with critical parent tracking. Unlike standard tablet computers, it cannot be dropped, operates in playgrounds, and offers a non-stigmatizing, premium watch layout.
               </p>
             </div>
 
@@ -138,7 +149,7 @@ export default function Partner() {
               </span>
               <h3 className="text-lg font-bold text-primary-navy">Revenue Streams</h3>
               <p className="text-xs text-gray-500 font-light leading-relaxed">
-                VocaSafe Watch™ operates on a high-margin, dual-stream revenue model:
+                Vocasafe Watch™ operates on a high-margin, dual-stream revenue model:
               </p>
               <ul className="text-xs text-gray-500 font-light space-y-2 pl-4 list-disc">
                 <li><strong>Hardware:</strong> Durable smartwatch sales and wearable sensory straps.</li>
@@ -172,7 +183,7 @@ export default function Partner() {
                 Educational Programs
               </span>
               <h3 className="text-2xl md:text-3xl font-display font-bold leading-tight">
-                VocaSafe For Schools & Districts
+                Vocasafe For Schools & Districts
               </h3>
               <p className="text-sm text-white/80 font-light leading-relaxed max-w-2xl">
                 We support special education teams and administrative school boards with tax-exempt bulk purchasing, dedicated onboarding classrooms workshops, customized vocabulary configurations, and specialized playground mounts.
@@ -210,7 +221,7 @@ export default function Partner() {
               Let's Coordinate a Meeting
             </h2>
             <p className="text-sm text-gray-500 font-light">
-              Connect with VocaSafe Watch™ Founder Catherine Katambo directly to discuss seed-funding rounds, clinical partnerships, or school trials.
+              Connect with Vocasafe Watch™ Founder Catherine Katambo directly to discuss seed-funding rounds, clinical partnerships, or school trials.
             </p>
           </div>
 

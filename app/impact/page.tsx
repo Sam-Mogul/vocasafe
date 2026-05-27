@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Users, Smile, School, ShieldAlert, CheckCircle2, Heart, Award, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "The Impact of VocaSafe Watch™ | Empowering Voices, Ensuring Safety",
-  description: "See how VocaSafe Watch™ is transforming lives — supporting individuals with autism, speech delays, and mobility challenges. Real stories of independence, connection, and peace of mind for families and caregivers.",
+  title: "The Impact of Vocasafe Watch™ | Empowering Voices, Ensuring Safety",
+  description: "See how Vocasafe Watch™ is transforming lives — supporting individuals with autism, speech delays, and mobility challenges. Real stories of independence, connection, and peace of mind for families and caregivers.",
   alternates: {
     canonical: "https://www.vocasafewatch.net/impact",
   },
   openGraph: {
-    title: "The Impact of VocaSafe Watch™ | Empowering Voices, Ensuring Safety",
-    description: "See how VocaSafe Watch™ is transforming lives — supporting individuals with autism, speech delays, and mobility challenges. Real stories of independence, connection, and peace of mind for families and caregivers.",
+    title: "The Impact of Vocasafe Watch™ | Empowering Voices, Ensuring Safety",
+    description: "See how Vocasafe Watch™ is transforming lives — supporting individuals with autism, speech delays, and mobility challenges. Real stories of independence, connection, and peace of mind for families and caregivers.",
     url: "https://www.vocasafewatch.net/impact",
     siteName: "Vocasafewatch",
     images: [
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
         url: "https://www.vocasafewatch.net/images/og/f376fd_e5d956ac453942a9927f60674b069ce3~mv2.jpeg",
         width: 2500,
         height: 1330,
-        alt: "VocaSafe Watch Impact and Inclusion",
+        alt: "Vocasafe Watch Impact and Inclusion",
       },
     ],
     type: "website",
@@ -29,13 +30,23 @@ export default function Impact() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* 1. Header Section */}
-      <section className="bg-gradient-to-br from-primary-navy to-slate-900 text-white py-16 lg:py-20 text-center relative">
+      <section className="relative bg-gradient-to-br from-primary-navy to-slate-900 text-white py-16 lg:py-20 text-center overflow-hidden">
+        {/* Background Image */}
+        <Image
+          src="/images/disp- vocasafe.webp"
+          alt="Vocasafe Impact"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-15"
+        />
+        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 space-y-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 space-y-4 relative z-10">
           <span className="text-accent-orange uppercase font-bold tracking-widest text-xs">
             Our Social Vision
           </span>
-          <h1 className="text-4xl sm:text-5xl font-display font-bold">
+          <h1 className="text-4xl sm:text-5xl font-sans font-extrabold text-white">
             Creating Impact, One Voice at a Time.
           </h1>
           <p className="text-base sm:text-lg text-white/80 font-light max-w-2xl mx-auto leading-relaxed">
@@ -62,7 +73,7 @@ export default function Impact() {
               </div>
               <h3 className="text-lg font-bold text-primary-navy">Caregivers & Families</h3>
               <p className="text-xs text-gray-500 font-light leading-relaxed">
-                VocaSafe is designed to replace constant hyper-vigilance with deep peace of mind. By providing secure GPS safe-zones and emergency auditory feeds alongside a wearable AAC keyboard, families can confidently support their loved ones in running, playing, and joining community outings.
+                Vocasafe is designed to replace constant hyper-vigilance with deep peace of mind. By providing secure GPS safe-zones and emergency auditory feeds alongside a wearable AAC keyboard, families can confidently support their loved ones in running, playing, and joining community outings.
               </p>
             </div>
 
@@ -99,7 +110,7 @@ export default function Impact() {
               Real-World Scenarios
             </h2>
             <p className="text-xs text-gray-500 font-medium uppercase tracking-widest">
-              Illustrating the Future Lifeline of VocaSafe Watch™
+              Illustrating the Future Lifeline of Vocasafe Watch™
             </p>
           </div>
 
@@ -111,7 +122,7 @@ export default function Impact() {
               </span>
               <h3 className="text-lg font-bold text-primary-navy">Emma's Pool Outing (Autism, Age 12)</h3>
               <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
-                Emma is a vibrant 12-year-old autistic child who loves pool play. Since heavy tablets are prohibited near water, she was previously left completely without a voice on outings, unable to signal when she got cold, tired, or thirsty. With VocaSafe Watch's IP68 waterproof chassis, Emma can comfortably wear her AAC on the swings and in the pool, tapping symbol boards to request juice directly from the water.
+                Emma is a vibrant 12-year-old autistic child who loves pool play. Since heavy tablets are prohibited near water, she was previously left completely without a voice on outings, unable to signal when she got cold, tired, or thirsty. With Vocasafe Watch's IP68 waterproof chassis, Emma can comfortably wear her AAC on the swings and in the pool, tapping symbol boards to request juice directly from the water.
               </p>
             </div>
 
@@ -122,7 +133,7 @@ export default function Impact() {
               </span>
               <h3 className="text-lg font-bold text-primary-navy">Marcus at the Park (Speech Apraxia, Age 7)</h3>
               <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
-                Marcus, who has developmental speech apraxia, wandered off during a crowded community festival at a local park. Because he cannot say his name or address, his father faced standard panic. VocaSafe's active safety boundaries immediately pinged the father's phone as Marcus crossed the tree line. His father traced the route, used the emergency audio stream to hear Marcus laughing, and located him in seconds.
+                Marcus, who has developmental speech apraxia, wandered off during a crowded community festival at a local park. Because he cannot say his name or address, his father faced standard panic. Vocasafe's active safety boundaries immediately pinged the father's phone as Marcus crossed the tree line. His father traced the route, used the emergency audio stream to hear Marcus laughing, and located him in seconds.
               </p>
             </div>
           </div>
@@ -184,7 +195,7 @@ export default function Impact() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-navy">
-              Why Collaborate With VocaSafe?
+              Why Collaborate With Vocasafe?
             </h2>
             <p className="text-xs text-gray-500 font-medium">
               We align deep technical expertise with authentic lived experience.
@@ -249,7 +260,7 @@ export default function Impact() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 space-y-6">
           <h2 className="text-3xl sm:text-4xl font-display font-bold">
-            Partner With VocaSafe Watch™
+            Partner With Vocasafe Watch™
           </h2>
           <p className="text-sm sm:text-base text-white/70 max-w-xl mx-auto font-light leading-relaxed">
             We are actively seeking strategic investors, clinical SLP researchers, and developmental schools for initial field pilot programs.

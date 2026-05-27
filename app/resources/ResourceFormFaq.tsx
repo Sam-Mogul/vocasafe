@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { Send, Upload, ChevronDown, CheckCircle2, AlertCircle, HelpCircle, Loader2 } from "lucide-react";
+import PhoneInput, { getDialCode } from "@/components/ui/PhoneInput";
+import { isValidEmail } from "@/lib/utils";
 
 export default function ResourceFormFaq() {
   // FAQ Accordion State
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  // File Upload Form State
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -16,6 +17,8 @@ export default function ResourceFormFaq() {
     organization: "",
     message: "",
   });
+
+  const [countryCode, setCountryCode] = useState("US");
 
   const [file1, setFile1] = useState<File | null>(null);
   const [file2, setFile2] = useState<File | null>(null);
@@ -33,7 +36,7 @@ export default function ResourceFormFaq() {
     },
     {
       question: "Can my school or insurance pay?",
-      answer: "Yes! We are designing VocaSafe Watch™ to comply with school board procurement guidelines (accepting purchase orders) and are seeking insurance coverage eligibility (DME codes) to ensure families can get device coverage."
+      answer: "Yes! We are designing Vocasafe Watch™ to comply with school board procurement guidelines (accepting purchase orders) and are seeking insurance coverage eligibility (DME codes) to ensure families can get device coverage."
     }
   ];
 
@@ -63,6 +66,11 @@ export default function ResourceFormFaq() {
       setErrMessage("Please fill in Email and Message fields.");
       return;
     }
+    if (!isValidEmail(formData.email)) {
+      setFormStatus("error");
+      setErrMessage("Please enter a valid email address.");
+      return;
+    }
 
     setFormStatus("loading");
     setErrMessage("");
@@ -71,7 +79,7 @@ export default function ResourceFormFaq() {
       const uploadData = new FormData();
       uploadData.append("name", `${formData.firstName} ${formData.lastName}`);
       uploadData.append("email", formData.email);
-      uploadData.append("phone", formData.phone);
+      uploadData.append("phone", formData.phone ? `${getDialCode(countryCode)} ${formData.phone}` : "");
       uploadData.append("organization", formData.organization);
       uploadData.append("message", formData.message);
 
@@ -116,7 +124,7 @@ export default function ResourceFormFaq() {
             </h2>
             <div className="w-10 h-1 bg-accent-orange rounded-full" />
             <p className="text-xs text-gray-500 font-light">
-              Submit clinical evaluations, IEP guides, or referral letters to VocaSafe.
+              Submit clinical evaluations, IEP guides, or referral letters to Vocasafe.
             </p>
           </div>
 
@@ -170,13 +178,14 @@ export default function ResourceFormFaq() {
               <label htmlFor="res-phone" className="block text-xs font-bold text-primary-navy uppercase tracking-wider mb-2">
                 Phone Number
               </label>
-              <input
+              <PhoneInput
                 id="res-phone"
-                type="tel"
-                placeholder="Enter phone number"
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full bg-white border border-gray-200 rounded-lg py-2.5 px-3.5 text-sm text-gray-800 focus:outline-none focus:ring-1 focus:ring-accent-orange focus:border-accent-orange"
+                onChange={(val) => setFormData({ ...formData, phone: val })}
+                countryCode={countryCode}
+                onChangeCountryCode={setCountryCode}
+                placeholder="Enter phone number"
+                inputClassName="bg-white border-gray-200"
               />
             </div>
           </div>
@@ -277,7 +286,7 @@ export default function ResourceFormFaq() {
               <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-green-500 mt-0.5" />
               <div className="text-xs">
                 <strong className="block font-bold">Files Uploaded Successfully!</strong>
-                Documents were stored securely in VocaSafe Storage. Catherine has been notified.
+                Documents were stored securely in Vocasafe Storage. The team has been notified.
               </div>
             </div>
           )}

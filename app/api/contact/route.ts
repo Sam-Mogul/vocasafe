@@ -1,22 +1,36 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { Resend } from "resend";
+import { sanitizeInput, isValidEmail } from "@/lib/utils";
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { firstName, lastName, email, phone, organization, inquiryType, message, consent, attachmentUrl } = body;
+    
+    const firstName = sanitizeInput(body.firstName);
+    const lastName = sanitizeInput(body.lastName);
+    const email = sanitizeInput(body.email);
+    const phone = sanitizeInput(body.phone);
+    const organization = sanitizeInput(body.organization);
+    const inquiryType = sanitizeInput(body.inquiryType);
+    const message = sanitizeInput(body.message);
+    const attachmentUrl = sanitizeInput(body.attachmentUrl);
+    const consent = !!body.consent;
 
     // Server-side validation
     if (!firstName || !lastName || !email) {
       return NextResponse.json({ error: "Missing required fields: firstName, lastName, and email are required." }, { status: 400 });
     }
 
+    if (!isValidEmail(email)) {
+      return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
+    }
+
     if (!consent) {
       return NextResponse.json({ error: "Data storage consent is required to submit inquiries." }, { status: 400 });
     }
 
-    console.log("📨 Received VocaSafe Inquiry:", { firstName, lastName, email, phone, organization, inquiryType, message, attachmentUrl });
+    console.log("📨 Received Vocasafe Inquiry:", { firstName, lastName, email, phone, organization, inquiryType, message, attachmentUrl });
 
     // Step 1: Insert inquiry into Supabase PostgreSQL 'contacts' table
     if (supabase) {
@@ -65,7 +79,7 @@ export async function POST(req: Request) {
     const emailHtml = `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #f0f0f0; border-radius: 12px; color: #121F36;">
         <h2 style="color: #E95F21; border-bottom: 2px solid #E95F21; padding-bottom: 10px; margin-top: 0;">
-          VocaSafe Watch™ Website Inquiry
+          Vocasafe Watch™ Website Inquiry
         </h2>
         <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
           <tr>
@@ -109,15 +123,15 @@ export async function POST(req: Request) {
 
         <div style="margin-top: 20px; font-size: 10px; color: #9CA3AF; text-align: center; border-top: 1px solid #eee; padding-top: 15px;">
           Consent Checkbox: Approved (User consented to data storage for inquiry replies).<br />
-          © 2026 by VocaSafe Watch™. Automated Notification Hub.
+          © 2026 by Vocasafe Watch™. Automated Notification Hub.
         </div>
       </div>
     `;
 
     const { data, error } = await resend.emails.send({
-      from: `VocaSafe Alerts <${fromEmail}>`,
+      from: `Vocasafe Alerts <${fromEmail}>`,
       to: toEmails,
-      subject: `[VocaSafe Inquiry] ${inquiryType} - ${firstName} ${lastName}`,
+      subject: `[Vocasafe Inquiry] ${inquiryType} - ${firstName} ${lastName}`,
       html: emailHtml,
     });
 

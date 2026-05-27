@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { Resend } from "resend";
+import { sanitizeInput, isValidEmail } from "@/lib/utils";
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { email, consent } = body;
+    const email = sanitizeInput(body.email);
+    const consent = !!body.consent;
 
     if (!email) {
       return NextResponse.json({ error: "Email address is required." }, { status: 400 });
@@ -15,13 +17,11 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Consent checkbox must be checked to subscribe." }, { status: 400 });
     }
 
-    // Basic email format check
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json({ error: "Please provide a valid email address." }, { status: 400 });
+    if (!isValidEmail(email)) {
+      return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
     }
 
-    console.log("📬 New VocaSafe Newsletter Subscriber:", { email, consent });
+    console.log("📬 New Vocasafe Newsletter Subscriber:", { email, consent });
 
     // Step 1: Insert subscriber into Supabase PostgreSQL 'newsletter_subscribers' table
     if (supabase) {
@@ -79,22 +79,22 @@ export async function POST(req: Request) {
           New Newsletter Subscriber
         </h3>
         <p style="font-size: 14px; line-height: 1.5;">
-          A new user has subscribed to the VocaSafe Watch™ newsletter community:
+          A new user has subscribed to the Vocasafe Watch™ newsletter community:
         </p>
         <p style="font-size: 16px; font-weight: bold; background-color: #f9f9f9; padding: 12px; border-radius: 6px; text-align: center;">
           <a href="mailto:${email}" style="color: #121F36; text-decoration: none;">${email}</a>
         </p>
         <div style="font-size: 10px; color: #9CA3AF; text-align: center; border-top: 1px solid #eee; padding-top: 12px;">
           Subscriber consent checkbox: APPROVED.<br />
-          © 2026 by VocaSafe Watch™. Automated Notification Hub.
+          © 2026 by Vocasafe Watch™. Automated Notification Hub.
         </div>
       </div>
     `;
 
     const { error } = await resend.emails.send({
-      from: `VocaSafe Alerts <${fromEmail}>`,
+      from: `Vocasafe Alerts <${fromEmail}>`,
       to: toEmails,
-      subject: `[VocaSafe Subscriber] New Signup: ${email}`,
+      subject: `[Vocasafe Subscriber] New Signup: ${email}`,
       html: notificationHtml,
     });
 

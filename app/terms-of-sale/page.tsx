@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Sale | VocaSafe Watch™",
-  description: "Read the VocaSafe Watch™ Terms of Sale. Information regarding waitlist pre-orders, crowdfunding tiers, and institutional school purchases.",
+  title: "Terms of Sale | Vocasafe Watch™",
+  description: "Read the Vocasafe Watch™ Terms of Sale. Information regarding waitlist pre-orders, crowdfunding tiers, and institutional school purchases.",
   alternates: {
     canonical: "https://www.vocasafewatch.net/terms-of-sale",
   },
@@ -27,8 +27,8 @@ export default function TermsOfSale() {
           <div className="space-y-4">
             <h2 className="text-xl font-bold text-primary-navy">1. Pre-Order Waitlist Phase</h2>
             <div className="w-10 h-1 bg-accent-orange rounded-full" />
-            <p>
-              Please note that VocaSafe Watch™ is currently in active prototype engineering, certification, and co-design phases. **No transactions are live, no items are ready to ship, and no payment card data is captured on this website.**
+             <p>
+              Please note that Vocasafe Watch™ is currently in active prototype engineering, certification, and co-design phases. <strong className="font-bold text-gray-800">No transactions are live, no items are ready to ship, and no payment card data is captured on this website.</strong>
             </p>
             <p>
               By submitting your name to our early access waitlist, you reserve a priority position to participate in our regional pilot cohorts or order early-production runs when commercial manufacturing begins. Submitting to the waitlist does not constitute a binding sales contract.
@@ -47,7 +47,7 @@ export default function TermsOfSale() {
             <h2 className="text-xl font-bold text-primary-navy">3. Institutional & School Procurement</h2>
             <div className="w-10 h-1 bg-accent-orange rounded-full" />
             <p>
-              We accommodate special education school boards and districts with formal written price quotes, tax-exempt institutional licensing, and bulk purchase agreement options. To request a custom quote, please submit your requirements through our secure uploader on the **Resources** page or email us at <a href="mailto:info@vocasafewatch.net" className="text-accent-orange font-semibold hover:underline">info@vocasafewatch.net</a>.
+              We accommodate special education school boards and districts with formal written price quotes, tax-exempt institutional licensing, and bulk purchase agreement options. To request a custom quote, please submit your requirements through our secure uploader on the <strong className="font-bold text-gray-800">Resources</strong> page or email us at <a href="mailto:info@vocasafewatch.net" className="text-accent-orange font-semibold hover:underline">info@vocasafewatch.net</a>.
             </p>
           </div>
 

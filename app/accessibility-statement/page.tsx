@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ShieldCheck, HelpingHand, Eye } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Accessibility Statement | VocaSafe Watch™",
-  description: "VocaSafe Watch™ is committed to digital and physical accessibility, conforming to Web Content Accessibility Guidelines (WCAG) 2.1 Level AA/AAA benchmarks.",
+  title: "Accessibility Statement | Vocasafe Watch™",
+  description: "Vocasafe Watch™ is committed to digital and physical accessibility, conforming to Web Content Accessibility Guidelines (WCAG) 2.1 Level AA/AAA benchmarks.",
   alternates: {
     canonical: "https://www.vocasafewatch.net/accessibility-statement",
   },
@@ -30,10 +30,10 @@ export default function AccessibilityStatement() {
             <h2 className="text-xl font-bold text-primary-navy">Our Accessibility Goal</h2>
             <div className="w-10 h-1 bg-accent-orange rounded-full" />
             <p>
-              VocaSafe Watch™ was founded on lived experience with developmental communication challenges. We believe communication is a fundamental human right, and that digital barriers should never prevent families, therapists, or partners from accessing our tools.
+              Vocasafe Watch™ was founded on lived experience with developmental communication challenges. We believe communication is a fundamental human right, and that digital barriers should never prevent families, therapists, or partners from accessing our tools.
             </p>
             <p>
-              We are actively developing this website and our future smartwatch hardware interfaces to align with the **Web Content Accessibility Guidelines (WCAG) 2.1 Level AA** standards at a minimum, targeting Level AAA where possible.
+              We are actively developing this website and our future smartwatch hardware interfaces to align with the <strong className="font-bold text-gray-800">Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong> standards at a minimum, targeting Level AAA where possible.
             </p>
           </div>
 
@@ -53,7 +53,7 @@ export default function AccessibilityStatement() {
             <h2 className="text-xl font-bold text-primary-navy">Biometric & Sensory Safety</h2>
             <div className="w-10 h-1 bg-accent-orange rounded-full" />
             <p>
-              Our commitment goes beyond standard web layouts. VocaSafe Watch™ hardware is designed directly for sensory comfort, avoiding steep auditory notifications (high-pitched buzzers), flickering screens, or abrasive straps that trigger sensory defensiveness.
+              Our commitment goes beyond standard web layouts. Vocasafe Watch™ hardware is designed directly for sensory comfort, avoiding steep auditory notifications (high-pitched buzzers), flickering screens, or abrasive straps that trigger sensory defensiveness.
             </p>
           </div>
 
@@ -64,7 +64,7 @@ export default function AccessibilityStatement() {
               Digital accessibility is a continuous cycle. If you encounter any usability barriers, contrast issues, or screen-reader errors while using our site, please contact Catherine Katambo directly:
             </p>
             <div className="p-6 bg-neutral-light border border-gray-100 rounded-xl text-xs space-y-2 font-semibold">
-              <span className="block text-primary-navy">VocaSafe Watch™ Accessibility Operations</span>
+              <span className="block text-primary-navy">Vocasafe Watch™ Accessibility Operations</span>
               <span className="block text-gray-500">Email: <a href="mailto:info@vocasafewatch.net" className="text-accent-orange hover:underline">info@vocasafewatch.net</a></span>
               <span className="block text-gray-500">Phone: <a href="tel:+19786015097" className="text-primary-navy hover:underline">+1 (978) 601-5097</a></span>
             </div>

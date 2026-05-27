@@ -8,13 +8,18 @@
   --color-neutral-light: #F5F5F5;
   --color-border-light: #E5E7EB;
   
-  --font-sans: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
-  --font-display: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-sora), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-sora), system-ui, -apple-system, sans-serif;
 }
 
 :root {
   --background: #FFFFFF;
   --foreground: #121212;
+}
+
+/* Scale all rem units down ~6% system-wide */
+html {
+  font-size: 93.75%; /* 15px base instead of 16px */
 }
 
 body {
@@ -43,3 +48,51 @@ body {
 .accordion-content {
   transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
+
+/* Infinite Scrolling Marquee Ticker */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Premium micro-animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
