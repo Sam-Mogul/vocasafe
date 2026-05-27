@@ -43,11 +43,22 @@ export default function Home() {
       />
 
       {/* SECTION 1 — Hero */}
-      <section className="relative w-full min-h-[480px] sm:min-h-[520px] flex items-center overflow-hidden py-12 bg-gradient-to-br from-primary-navy to-slate-900 text-white">
-        {/* Background Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <section className="relative w-full min-h-[480px] sm:min-h-[520px] flex items-center overflow-hidden py-12 text-white">
+        {/* Background Image */}
+        <Image
+          src="/images/disp- vocasafe.webp"
+          alt="VocaSafe Watch Hero Background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        {/* Dark Tint Overlay */}
+        <div className="absolute inset-0 bg-black/65 z-10" />
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-10" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left text column */}
             <div className="lg:col-span-7 space-y-6 text-left">
