@@ -74,14 +74,14 @@ export default function Home() {
             </div>
 
             {/* Right Watch image column */}
-            <div className="lg:col-span-5 hidden lg:flex justify-center">
-              <div className="relative w-full max-w-[280px] aspect-square transition-transform hover:scale-105 duration-500">
+            <div className="lg:col-span-5 flex justify-center mt-8 lg:mt-0 w-full">
+              <div className="relative w-full max-w-[240px] sm:max-w-[280px] aspect-square transition-transform hover:scale-105 duration-500">
                 <Image
                   src="/images/vocasafe watch prototype1.png"
                   alt="VocaSafe Watch Prototype"
                   fill
                   priority
-                  sizes="280px"
+                  sizes="(max-width: 1024px) 240px, 280px"
                   className="object-contain filter drop-shadow-[0_20px_50px_rgba(233,95,33,0.15)]"
                 />
               </div>
@@ -108,7 +108,7 @@ export default function Home() {
               Caregivers are left guessing. Responses are delayed. Urgent needs go unexpressed. And the communication tools that exist today were not built for these moments.
             </p>
             <p className="text-base sm:text-lg font-bold text-[#E95F21] text-center pt-2">
-              VocaSafe Watch was.
+              VocaSafe Watch is built specifically for these moments.
             </p>
           </div>
         </div>
