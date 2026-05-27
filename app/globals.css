@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-navy: #121F36;
+  --color-accent-orange: #E95F21;
+  --color-accent-light: #E1C08E;
+  --color-neutral-dark: #121212;
+  --color-neutral-light: #F5F5F5;
+  --color-border-light: #E5E7EB;
+  
+  --font-sans: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #121212;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium utility styles */
+.gradient-orange {
+  background: linear-gradient(135deg, #F97316 0%, #E95F21 100%);
+}
+
+.gradient-navy {
+  background: linear-gradient(135deg, #121F36 0%, #1E3A8A 100%);
+}
+
+.gradient-premium {
+  background: radial-gradient(circle at 10% 20%, rgba(18, 31, 54, 1) 0%, rgba(30, 58, 138, 1) 90%);
+}
+
+/* Accordion transition utility */
+.accordion-content {
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
