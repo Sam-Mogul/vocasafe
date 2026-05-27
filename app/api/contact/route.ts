@@ -10,16 +10,13 @@ export async function POST(req: Request) {
     const firstName = sanitizeInput(body.firstName);
     const lastName = sanitizeInput(body.lastName);
     const email = sanitizeInput(body.email);
-    const phone = sanitizeInput(body.phone);
-    const organization = sanitizeInput(body.organization);
     const inquiryType = sanitizeInput(body.inquiryType);
     const message = sanitizeInput(body.message);
-    const attachmentUrl = sanitizeInput(body.attachmentUrl);
     const consent = !!body.consent;
 
     // Server-side validation
-    if (!firstName || !lastName || !email) {
-      return NextResponse.json({ error: "Missing required fields: firstName, lastName, and email are required." }, { status: 400 });
+    if (!firstName || !lastName || !email || !message) {
+      return NextResponse.json({ error: "Missing required fields: firstName, lastName, email, and message are required." }, { status: 400 });
     }
 
     if (!isValidEmail(email)) {
@@ -30,7 +27,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Data storage consent is required to submit inquiries." }, { status: 400 });
     }
 
-    console.log("📨 Received Vocasafe Inquiry:", { firstName, lastName, email, phone, organization, inquiryType, message, attachmentUrl });
+    console.log("📨 Received VocaSafe Inquiry (Simplified):", { firstName, lastName, email, inquiryType, message });
 
     // Step 1: Insert inquiry into Supabase PostgreSQL 'contacts' table
     if (supabase) {
@@ -41,11 +38,11 @@ export async function POST(req: Request) {
             first_name: firstName,
             last_name: lastName,
             email,
-            phone: phone || null,
-            organization: organization || null,
             inquiry_type: inquiryType,
-            message: message || null,
-            attachment_url: attachmentUrl || null,
+            message,
+            phone: null,
+            organization: null,
+            attachment_url: null,
           },
         ]);
 
@@ -71,15 +68,15 @@ export async function POST(req: Request) {
     const resend = new Resend(apiKey);
     const fromEmail = process.env.RESEND_FROM_EMAIL || "noreply@vocasafewatch.net";
     
-    // Support multiple email recipients: split env by comma, fallback to both info@ and catherine@
+    // Support multiple email recipients: split env by comma, fallback to info@
     const toEmails = process.env.RESEND_TO_EMAIL
       ? process.env.RESEND_TO_EMAIL.split(",").map(e => e.trim())
-      : ["info@vocasafewatch.net", "catherine@vocasafewatch.net"];
+      : ["info@vocasafewatch.net"];
 
     const emailHtml = `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #f0f0f0; border-radius: 12px; color: #121F36;">
         <h2 style="color: #E95F21; border-bottom: 2px solid #E95F21; padding-bottom: 10px; margin-top: 0;">
-          Vocasafe Watch™ Website Inquiry
+          VocaSafe Watch™ Website Inquiry
         </h2>
         <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
           <tr>
@@ -95,43 +92,29 @@ export async function POST(req: Request) {
             <td style="padding: 6px 0;"><a href="mailto:${email}" style="color: #121F36; font-weight: bold;">${email}</a></td>
           </tr>
           <tr>
-            <td style="padding: 6px 0; font-weight: bold;">Phone Number:</td>
-            <td style="padding: 6px 0;">${phone || "Not provided"}</td>
-          </tr>
-          <tr>
-            <td style="padding: 6px 0; font-weight: bold;">Organization:</td>
-            <td style="padding: 6px 0;">${organization || "Not provided"}</td>
-          </tr>
-          <tr>
             <td style="padding: 6px 0; font-weight: bold; color: #E95F21;">Inquiry Type:</td>
             <td style="padding: 6px 0; font-weight: bold; color: #E95F21;">${inquiryType}</td>
           </tr>
-          ${attachmentUrl ? `
-          <tr>
-            <td style="padding: 6px 0; font-weight: bold; color: #10B981;">Attachment URL:</td>
-            <td style="padding: 6px 0;"><a href="${attachmentUrl}" target="_blank" style="color: #10B981; font-weight: bold; text-decoration: underline;">View Uploaded File</a></td>
-          </tr>
-          ` : ""}
         </table>
         
         <div style="margin-top: 20px; padding: 15px; background-color: #f9f9f9; border-radius: 8px;">
           <h4 style="margin-top: 0; color: #121F36; font-size: 13px; font-weight: bold; text-transform: uppercase;">Message Content</h4>
           <p style="margin: 0; font-size: 14px; line-height: 1.6; white-space: pre-wrap; font-style: italic; color: #4B5563;">
-            ${message || "No message provided."}
+            ${message}
           </p>
         </div>
 
         <div style="margin-top: 20px; font-size: 10px; color: #9CA3AF; text-align: center; border-top: 1px solid #eee; padding-top: 15px;">
           Consent Checkbox: Approved (User consented to data storage for inquiry replies).<br />
-          © 2026 by Vocasafe Watch™. Automated Notification Hub.
+          © 2026 by VocaSafe Watch™. Automated Notification Hub.
         </div>
       </div>
     `;
 
     const { data, error } = await resend.emails.send({
-      from: `Vocasafe Alerts <${fromEmail}>`,
+      from: `VocaSafe Alerts <${fromEmail}>`,
       to: toEmails,
-      subject: `[Vocasafe Inquiry] ${inquiryType} - ${firstName} ${lastName}`,
+      subject: `[VocaSafe Inquiry] ${inquiryType} - ${firstName} ${lastName}`,
       html: emailHtml,
     });
 

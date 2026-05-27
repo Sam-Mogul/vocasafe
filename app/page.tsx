@@ -2,251 +2,252 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import ContactForm from "@/app/contact-us/ContactForm";
+import { MessageSquare, Bell, Share2 } from "lucide-react";
 
 export default function Home() {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "VocaSafe Watch",
+    "url": "https://www.vocasafewatch.net",
+    "logo": "https://www.vocasafewatch.net/images/logo.png",
+    "description": "An intelligent wearable assistive communication platform designed for critical real-world moments.",
+    "foundingDate": "2024",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-978-601-5097",
+      "contactType": "customer support",
+      "email": "info@vocasafewatch.net"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "165 Middlesex Ave, #1093",
+      "addressLocality": "Somerville",
+      "addressRegion": "MA",
+      "postalCode": "02145",
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://www.instagram.com/vocasafewatch",
+      "https://www.facebook.com/vocasafewatch",
+      "https://www.linkedin.com/company/vocasafe-watch",
+      "https://x.com/vocasafe"
+    ]
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#F5F5F5] font-sans">
-      
-      {/* 1. Hero Section matching Screenshot 1 */}
-      <section className="relative w-full h-[600px] sm:h-[680px] flex items-center overflow-hidden">
-        {/* Background Image */}
-        <Image
-          src="/images/hero voccasafe.jpeg"
-          alt="Vocasafe Watch Landing Hero"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        {/* Semi-transparent overlay to ensure Sora Bold text is crisp */}
-        <div className="absolute inset-0 bg-black/60" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
 
+      {/* SECTION 1 — Hero */}
+      <section className="relative w-full min-h-[480px] sm:min-h-[520px] flex items-center overflow-hidden py-12 bg-gradient-to-br from-primary-navy to-slate-900 text-white">
+        {/* Background Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="max-w-3xl space-y-6 text-left">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-sans font-extrabold text-white leading-tight">
-              Designed to Give Every <br />
-              Voice a Way to Be Heard
-            </h1>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left text column */}
+            <div className="lg:col-span-7 space-y-6 text-left">
+              <span className="text-xs sm:text-sm text-[#E95F21] font-bold uppercase tracking-widest block">
+                Communication Anywhere. Anytime.
+              </span>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-extrabold text-white leading-tight">
+                An intelligent wearable assistive communication platform designed for critical real-world moments.
+              </h1>
 
-            <p className="text-sm sm:text-base text-white/95 font-light leading-relaxed max-w-2xl">
-              Vocasafe Watch™ is being developed as a waterproof, AI-powered communication smartwatch designed for future AAC use. <br />
-              It is designed to combine AAC communication tools with real-time safety tracking in a single wearable device — aiming to empower users with safety, speech, and connection on the go.
-            </p>
+              <p className="text-xs sm:text-sm text-white/90 font-light leading-relaxed max-w-2xl">
+                Built to support real-time communication, caregiver awareness, and safety for individuals with communication challenges.
+              </p>
 
-            {/* Hero Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
-              <Link
-                href="/contact-us?type=Join%20waitlist"
-                className="bg-[#E95F21] hover:bg-orange-600 transition-all duration-300 font-sans font-extrabold uppercase tracking-wider py-4 px-10 rounded-full text-center text-xs text-white shadow-md hover:shadow-lg hover:scale-[1.03] hover:-translate-y-0.5 active:scale-[0.98]"
-              >
-                Join Waitlist
-              </Link>
-              
-              {/* White pill with inline black right arrow circle mirroring Screenshot 1 */}
-              <Link
-                href="/contact-us?type=Request%20Pitch%20Deck"
-                className="group bg-white hover:bg-gray-50 text-neutral-dark font-sans font-bold uppercase tracking-wider py-2 pl-8 pr-2 rounded-full flex items-center justify-between gap-6 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5 active:scale-[0.98] sm:self-auto"
-              >
-                <span className="text-[10px] sm:text-xs">Request Pitch Deck</span>
-                <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white text-xs font-bold transition-transform duration-300 group-hover:translate-x-1">
-                  ➔
-                </div>
-              </Link>
+              {/* Hero Buttons */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                <Link
+                  href="/contact-us"
+                  className="bg-[#E95F21] hover:bg-orange-600 transition-all duration-300 font-sans font-extrabold uppercase tracking-wider py-3.5 px-8 rounded-full text-center text-xs text-white shadow-md hover:shadow-lg hover:scale-[1.03] hover:-translate-y-0.5 active:scale-[0.98]"
+                >
+                  Join Waitlist
+                </Link>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* 2. Communication Meets Safety Section matching Screenshot 2 */}
-      <section className="py-20 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
-          {/* Header & Subtitle */}
-          <div className="text-center max-w-3xl mx-auto space-y-3">
-            <h2 className="text-3xl sm:text-[38px] font-sans font-bold text-[#121F36] leading-tight">
-              Communication Meets Safety
-            </h2>
-            <p className="text-sm sm:text-base text-gray-500 font-light max-w-2xl mx-auto">
-              Assistive technology designed for individuals with communication challenges
-            </p>
-            
-            {/* Center Slider Dot divider */}
-            <div className="relative flex items-center justify-center pt-3">
-              <div className="w-full max-w-[600px] h-[1px] bg-gray-200" />
-              <div className="absolute w-1.5 h-1.5 rounded-full bg-black" />
-            </div>
-          </div>
-
-          {/* Grid Layout containing Product and Pillars */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center pt-4">
-            {/* Left Watch Prototype display (span 4) */}
-            <div className="lg:col-span-4 flex justify-center">
-              <div className="relative w-full max-w-[280px] aspect-square transition-transform hover:scale-105 duration-300">
+            {/* Right Watch image column */}
+            <div className="lg:col-span-5 hidden lg:flex justify-center">
+              <div className="relative w-full max-w-[280px] aspect-square transition-transform hover:scale-105 duration-500">
                 <Image
                   src="/images/vocasafe watch prototype1.png"
-                  alt="Vocasafe Smartwatch Prototype Display"
+                  alt="VocaSafe Watch Prototype"
                   fill
-                  sizes="(max-width: 1024px) 100vw, 280px"
-                  className="object-contain"
+                  priority
+                  sizes="280px"
+                  className="object-contain filter drop-shadow-[0_20px_50px_rgba(233,95,33,0.15)]"
                 />
               </div>
             </div>
-
-            {/* Right Three Columns (span 8) */}
-            <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-              
-              {/* 01 AAC Integration */}
-              <div className="bg-[#F5F5F5] border border-gray-200/60 rounded-[14px] p-6 space-y-4 hover:shadow-sm transition-shadow">
-                <span className="inline-block text-xs font-bold text-white bg-[#E95F21] rounded-md px-2 py-0.5">
-                  01
-                </span>
-                <h3 className="font-sans font-bold text-base text-[#121F36]">
-                  AAC Integration
-                </h3>
-                <p className="text-[11px] sm:text-xs text-gray-500 font-light leading-relaxed">
-                  Vocasafe Watch™ is intended to integrate with leading AAC systems once fully developed, allowing users to access their customized vocabulary sets right from their wrist. Support for symbol-based communication, predictive text, and voice output will ensure users can express complex thoughts quickly and naturally.
-                </p>
-              </div>
-
-              {/* 02 GPS Safety Tracking */}
-              <div className="bg-[#F5F5F5] border border-gray-200/60 rounded-[14px] p-6 space-y-4 hover:shadow-sm transition-shadow">
-                <span className="inline-block text-xs font-bold text-white bg-[#E95F21] rounded-md px-2 py-0.5">
-                  02
-                </span>
-                <h3 className="font-sans font-bold text-base text-[#121F36]">
-                  GPS Safety Tracking
-                </h3>
-                <p className="text-[11px] sm:text-xs text-gray-500 font-light leading-relaxed">
-                  Advanced GPS technology is planned to provide accurate location tracking in future releases. Set up multiple safe zones for home, school, and therapy centers. Planned to provide notifications when your loved one arrives or leaves designated areas, with complete location history available through the caregiver app.
-                </p>
-              </div>
-
-              {/* 03 SOS Alerts */}
-              <div className="bg-[#F5F5F5] border border-gray-200/60 rounded-[14px] p-6 space-y-4 hover:shadow-sm transition-shadow">
-                <span className="inline-block text-xs font-bold text-white bg-[#E95F21] rounded-md px-2 py-0.5">
-                  03
-                </span>
-                <h3 className="font-sans font-bold text-base text-[#121F36]">
-                  SOS Alerts
-                </h3>
-                <p className="text-[11px] sm:text-xs text-gray-500 font-light leading-relaxed">
-                  Emergency alerts are intended to include precise GPS location, timestamp, and optional audio recording once released. Notifications will be sent simultaneously to all designated emergency contacts, aiming to ensure help arrives as quickly as possible.
-                </p>
-              </div>
-
-            </div>
           </div>
-
         </div>
       </section>
 
-      {/* 3. Designed to Work Section matching Screenshot 3 */}
-      <section className="py-20 bg-[#F5F5F5] border-b border-gray-200/60">
+      {/* SECTION 2 — The Real Problem */}
+      <section className="py-16 bg-[#121F36] text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
+          <h2 className="text-2xl sm:text-3xl font-sans font-bold text-white leading-tight">
+            The Communication Gap That Still Exists
+          </h2>
+          <div className="w-12 h-1 bg-[#E95F21] mx-auto rounded-full" />
+          <div className="space-y-4 text-white/90 text-xs sm:text-sm font-light leading-relaxed max-w-3xl mx-auto text-left sm:text-center pt-2">
+            <p>
+              Millions of individuals with communication disabilities struggle to express their needs in real time — not in therapy sessions or structured classrooms, but in the moments that matter most.
+            </p>
+            <p className="font-semibold text-white">
+              At the grocery store. At the park. During a medical emergency. In a crowded, unfamiliar environment.
+            </p>
+            <p>
+              Caregivers are left guessing. Responses are delayed. Urgent needs go unexpressed. And the communication tools that exist today were not built for these moments.
+            </p>
+            <p className="text-base sm:text-lg font-bold text-[#E95F21] text-center pt-2">
+              VocaSafe Watch was.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3 — How VocaSafe Supports Real-World Moments */}
+      <section className="py-16 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <h2 className="text-3xl sm:text-[38px] font-sans font-bold text-[#121F36] leading-tight">
-              How Vocasafe Watch™ is Designed to Work
+            <h2 className="text-2xl sm:text-3xl font-sans font-bold text-[#121F36] leading-tight">
+              Built for the Moments That Matter
             </h2>
-            <p className="text-sm sm:text-base text-gray-500 font-light max-w-2xl mx-auto">
-              Simple, seamless communication and safety in four steps
+            <div className="w-12 h-1 bg-[#E95F21] mx-auto rounded-full mt-2" />
+          </div>
+
+          {/* 3 Pillars Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-2">
+            {/* Pillar 1 — Communicate */}
+            <div className="bg-[#F5F5F5] border border-gray-200/60 rounded-[14px] p-6 space-y-4 hover:shadow-sm transition-shadow">
+              <div className="w-10 h-10 rounded-lg bg-orange-50 text-[#E95F21] flex items-center justify-center">
+                <MessageSquare className="w-5 h-5 stroke-[2.5]" />
+              </div>
+              <h3 className="font-sans font-bold text-base text-[#121F36]">
+                Communicate
+              </h3>
+              <p className="text-xs text-gray-500 font-light leading-relaxed">
+                Real-time AAC communication designed to work in any environment — familiar or unfamiliar, calm or urgent.
+              </p>
+            </div>
+
+            {/* Pillar 2 — Alert */}
+            <div className="bg-[#F5F5F5] border border-gray-200/60 rounded-[14px] p-6 space-y-4 hover:shadow-sm transition-shadow">
+              <div className="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center">
+                <Bell className="w-5 h-5 stroke-[2.5]" />
+              </div>
+              <h3 className="font-sans font-bold text-base text-[#121F36]">
+                Alert
+              </h3>
+              <p className="text-xs text-gray-500 font-light leading-relaxed">
+                Instant SOS alerts and caregiver notifications when communication breaks down or safety is at risk.
+              </p>
+            </div>
+
+            {/* Pillar 3 — Stay Connected */}
+            <div className="bg-[#F5F5F5] border border-gray-200/60 rounded-[14px] p-6 space-y-4 hover:shadow-sm transition-shadow">
+              <div className="w-10 h-10 rounded-lg bg-blue-50 text-[#121F36] flex items-center justify-center">
+                <Share2 className="w-5 h-5 stroke-[2.5]" />
+              </div>
+              <h3 className="font-sans font-bold text-base text-[#121F36]">
+                Stay Connected
+              </h3>
+              <p className="text-xs text-gray-500 font-light leading-relaxed">
+                Seamless connection between the individual, their caregivers, and the people around them — wherever they are.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4 — Current Development Status */}
+      <section className="py-16 bg-[#1A263E] text-white">
+        <div className="max-w-4xl mx-auto px-6 space-y-8">
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl sm:text-3xl font-sans font-bold text-white leading-tight">
+              Where We Are Today
+            </h2>
+            <div className="w-12 h-1 bg-[#E95F21] mx-auto rounded-full" />
+            <p className="text-xs sm:text-sm text-white/80 font-light max-w-xl mx-auto">
+              VocaSafe Watch is in active development. We are not yet shipping — and we are being intentional about every step. Here is what is actively underway:
             </p>
-            
-            {/* Center Slider divider */}
-            <div className="relative flex items-center justify-center pt-3">
-              <div className="w-full max-w-[600px] h-[1px] bg-gray-300" />
-              <div className="absolute w-1.5 h-1.5 rounded-full bg-black" />
+          </div>
+
+          {/* Clean Vertical List */}
+          <div className="space-y-6 max-w-2xl mx-auto pt-2">
+            <div className="border-l-4 border-[#E95F21] pl-5 py-1">
+              <strong className="block text-xs sm:text-sm font-bold text-white">
+                Co-design conversations with caregivers, educators, and clinicians
+              </strong>
+              <span className="block text-xs text-white/70 font-light mt-1">
+                ↳ Actively gathering insight from the communities this platform serves.
+              </span>
+            </div>
+
+            <div className="border-l-4 border-[#E95F21] pl-5 py-1">
+              <strong className="block text-xs sm:text-sm font-bold text-white">
+                Prototype workflow planning
+              </strong>
+              <span className="block text-xs text-white/70 font-light mt-1">
+                ↳ Translating co-design learnings into device architecture decisions.
+              </span>
+            </div>
+
+            <div className="border-l-4 border-[#E95F21] pl-5 py-1">
+              <strong className="block text-xs sm:text-sm font-bold text-white">
+                Clinical and caregiver input integration
+              </strong>
+              <span className="block text-xs text-white/70 font-light mt-1">
+                ↳ Incorporating feedback from speech-language pathologists and AAC specialists.
+              </span>
+            </div>
+
+            <div className="border-l-4 border-[#E95F21] pl-5 py-1">
+              <strong className="block text-xs sm:text-sm font-bold text-white">
+                Pilot program development
+              </strong>
+              <span className="block text-xs text-white/70 font-light mt-1">
+                ↳ Building the framework for early pilot partnerships with schools and therapy programs.
+              </span>
             </div>
           </div>
 
-          {/* Steps 2x2 grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto pt-4">
-            
-            {/* 01 Wear It */}
-            <div className="bg-white border border-gray-100 rounded-[14px] p-6 sm:p-8 space-y-3 hover:shadow-sm transition-all">
-              <div className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-[#E95F21] text-white text-xs font-bold">
-                01
-              </div>
-              <h3 className="font-sans font-bold text-lg text-[#121F36]">Wear It</h3>
-              <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                When released, users will be able to put on the Vocasafe Watch™ Designed for comfort and simplicity. Expected design is to stay active all day, tracking location and enabling communication when needed.
-              </p>
-            </div>
-
-            {/* 02 Communicate */}
-            <div className="bg-white border border-gray-100 rounded-[14px] p-6 sm:p-8 space-y-3 hover:shadow-sm transition-all">
-              <div className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-[#E95F21] text-white text-xs font-bold">
-                02
-              </div>
-              <h3 className="font-sans font-bold text-lg text-[#121F36]">Communicate</h3>
-              <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                When available, users will be able to use voice or touch to express needs using planned AAC tools. The planned AAC tools are designed to make it easy for users with speech challenges to send quick phrases, alerts, or custom messages to caregivers.
-              </p>
-            </div>
-
-            {/* 03 Stay Safe */}
-            <div className="bg-white border border-gray-100 rounded-[14px] p-6 sm:p-8 space-y-3 hover:shadow-sm transition-all">
-              <div className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-[#E95F21] text-white text-xs font-bold">
-                03
-              </div>
-              <h3 className="font-sans font-bold text-lg text-[#121F36]">Stay Safe</h3>
-              <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                Smart safety that never sleeps. Planned GPS and motion sensors are designed to help caregivers once the system is deployed to stay informed of movement and activity, providing peace of mind in real time.
-              </p>
-            </div>
-
-            {/* 04 Stay Connected */}
-            <div className="bg-white border border-gray-100 rounded-[14px] p-6 sm:p-8 space-y-3 hover:shadow-sm transition-all">
-              <div className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-[#E95F21] text-white text-xs font-bold">
-                04
-              </div>
-              <h3 className="font-sans font-bold text-lg text-[#121F36]">Stay Connected</h3>
-              <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                Designed for real-time insights once fully launched for family and therapists. Future updates plan to enable sharing of activity logs and communication charts summaries through the Vocasafe Care App, anywhere, anytime.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* 4. Text Callout & Orange Marquee Ticker Section matching Screenshot 4 */}
-      <section className="bg-white py-16 overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
-          
-          {/* Bold text callout */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-extrabold text-[#121F36] leading-tight tracking-tight max-w-4xl mx-auto">
-            Designed to empower AAC users with safety, speech, and connection on the go.
-          </h2>
-
-          {/* Premium Infinite-Scroll Orange Marquee Ticker */}
-          <div className="w-screen relative left-[50%] right-[50%] -mx-[50vw] bg-[#E95F21] py-4 select-none rotate-[0.5deg]">
-            <div className="flex whitespace-nowrap gap-8 animate-[marquee_24s_linear_infinite]">
-              {[0, 1, 2, 3, 4, 5].map((i) => (
-                <div key={i} className="inline-flex items-center gap-6 text-sm sm:text-base font-sans font-bold uppercase tracking-widest text-white">
-                  <span>Every voice matters - and every voice deserves to be heard.</span>
-                  <span className="text-[12px] opacity-80">♦</span>
-                </div>
-              ))}
+          <div className="text-center pt-4 space-y-4">
+            <p className="text-xs text-white/80 max-w-md mx-auto leading-relaxed font-light">
+              If you are a caregiver, clinician, school district, or investor who wants to be part of what comes next — we want to hear from you.
+            </p>
+            <div className="pt-2">
+              <Link
+                href="/contact-us"
+                className="inline-flex bg-[#E95F21] hover:bg-orange-600 transition-all font-sans font-extrabold uppercase tracking-wider py-3.5 px-8 rounded-full text-center text-xs text-white shadow-md active:scale-[0.98]"
+              >
+                Join the Waitlist
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. Guided by Lived Experience Section matching Screenshot 5 */}
-      <section className="py-20 bg-[#F5F5F5] border-t border-gray-100">
+      {/* SECTION 5 — Guided by Lived Experience */}
+      <section className="py-12 bg-[#F5F5F5] border-t border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Image column (span 6) */}
             <div className="lg:col-span-6 flex justify-center">
               <div className="relative w-full max-w-[460px] aspect-[4/3] rounded-[18px] overflow-hidden shadow-md border border-gray-200 bg-white">
                 <Image
                   src="/images/togetherness.avif"
-                  alt="Vocasafe Lived Experience Support Group"
+                  alt="VocaSafe Lived Experience Support Group"
                   fill
                   sizes="(max-width: 1024px) 100vw, 460px"
                   className="object-cover"
@@ -255,14 +256,14 @@ export default function Home() {
             </div>
 
             {/* Right Story column (span 6) */}
-            <div className="lg:col-span-6 space-y-6">
-              <h2 className="text-3xl font-sans font-bold text-[#121F36] leading-tight">
+            <div className="lg:col-span-6 space-y-4">
+              <h2 className="text-2xl font-sans font-bold text-[#121F36] leading-tight">
                 Guided by Lived Experience <br className="hidden sm:inline" />
                 and Professional Insight
               </h2>
               <div className="w-12 h-1 bg-[#E95F21] rounded-full" />
-              <p className="text-sm sm:text-base text-gray-600 font-light leading-relaxed">
-                Vocasafe is being designed through collaboration with families, caregivers, clinicians, educators, and technologists who understand the everyday realities of communication challenges. Their perspectives aim to inform how the platform is planned to be developed, tested, and refined over time. Feedback has been gathered through informational conversations and co-design.
+              <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
+                VocaSafe is developed through close collaboration with families, caregivers, clinicians, educators, and technologists who understand the everyday realities of communication challenges. Their active perspectives directly guide how our platform is built, evaluated, and refined. Feedback is gathered continuously through open co-design panels and community sessions.
               </p>
               
               <div className="pt-2">
@@ -280,19 +281,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Embedded Mini Form to support seamless actions */}
-      <section id="waitlist-form" className="py-20 bg-white border-t border-gray-100">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto space-y-3 mb-10">
+      {/* SECTION 6 — Waitlist / Get Involved */}
+      <section className="py-12 bg-white border-t border-gray-100">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <div className="max-w-xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-sans font-bold text-[#121F36]">
-              Join the Vocasafe Movement
+              Be Part of What's Coming
             </h2>
+            <div className="w-12 h-1 bg-[#E95F21] mx-auto rounded-full" />
             <p className="text-xs sm:text-sm text-gray-500 font-light">
-              Connect with us to receive milestone updates, requests for pilots, or strategic updates.
+              Join a growing community of caregivers, clinicians, educators, and advocates helping shape the future of assistive communication.
             </p>
           </div>
-
-          <ContactForm />
+          <div className="pt-2">
+            <Link
+              href="/contact-us"
+              className="inline-flex bg-[#121F36] hover:bg-slate-800 transition-all font-sans font-extrabold uppercase tracking-wider py-3.5 px-8 rounded-full text-center text-xs text-white shadow-md active:scale-[0.98]"
+            >
+              Join the Waitlist
+            </Link>
+          </div>
         </div>
       </section>
 

@@ -4,8 +4,8 @@ import Image from "next/image";
 import { Calendar, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Discover Vocasafe Watch™: The Wearable AAC Device for Safety & Communication",
-  description: "Explore the wearable AAC device Vocasafe Watch™—a perfect blend of communication tools and safety features designed for everyone.",
+  title: "Vocasafe Watch™ Platform Features | Wearable Assistive Communication",
+  description: "Explore the intelligent wearable assistive communication platform Vocasafe Watch™ — a complete fusion of AAC symbol boards, smart safety layers, and sensory-friendly design.",
   alternates: {
     canonical: "https://www.vocasafewatch.net/features",
   },
@@ -30,7 +30,7 @@ export default function Features() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* 1. Header Section with Background Image */}
-      <section className="relative w-full py-12 lg:py-16 flex items-center overflow-hidden bg-gradient-to-br from-primary-navy to-slate-900 text-white text-center">
+      <section className="relative w-full py-10 lg:py-12 flex items-center overflow-hidden bg-gradient-to-br from-primary-navy to-slate-900 text-white text-center">
         {/* Background Image */}
         <Image
           src="/images/disp- vocasafe.webp"
@@ -46,17 +46,16 @@ export default function Features() {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 space-y-3 relative z-10 animate-fade-in-up">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight text-white drop-shadow-md">
-            Built for Connection. <br className="sm:hidden" />
-            Designed for Every Environment.
+            Built for Real-World Communication.
           </h1>
           <p className="text-sm sm:text-base text-white/90 font-light max-w-2xl mx-auto leading-relaxed drop-shadow-sm">
-            Vocasafe Watch™ merges Augmentative and Alternative Communication (AAC) with smart safety layers in a rugged, sensory-friendly wearable device.
+            An intelligent wearable assistive communication platform — merging symbol-based AAC, smart safety layers, and sensory-friendly design into one rugged wrist device.
           </p>
         </div>
       </section>
 
       {/* 2. Core 8 Feature List Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 space-y-16 animate-fade-in-up animation-delay-100">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-navy">
@@ -168,7 +167,7 @@ export default function Features() {
               Prototyping & Laboratory Validation
             </span>
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-navy">
-              Engineering the Future of AAC Wearables
+              Building a New Standard in Assistive Wearables
             </h2>
             <div className="w-12 h-1 bg-accent-orange mx-auto rounded-full" />
           </div>
@@ -179,7 +178,7 @@ export default function Features() {
               <div className="relative w-full max-w-[280px] aspect-square rounded-2xl overflow-hidden bg-slate-800/40 p-2 border border-white/5 shadow-inner">
                 <Image
                   src="/images/watch%20illustration.avif"
-                  alt="Vocasafe Smartwatch High-Fidelity Rendering"
+                  alt="Vocasafe Watch High-Fidelity Rendering"
                   fill
                   sizes="(max-width: 768px) 100vw, 280px"
                   className="object-contain"
@@ -274,15 +273,15 @@ export default function Features() {
       </section>
 
       {/* 4. Planned Capabilities (4-item grid with Left Accents & NO Icons) */}
-      <section className="py-20 bg-white">
+      <section className="py-14 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 space-y-16 animate-fade-in-up animation-delay-200">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-navy">
-              Planned Hardware Capabilities
+              Coming in Pilot Phase
             </h2>
             <div className="w-12 h-1 bg-accent-orange mx-auto rounded-full" />
             <p className="text-sm text-gray-500 font-light leading-relaxed">
-              Advanced engineering targets currently in prototyping and laboratory evaluation.
+              Engineering targets actively in prototyping and laboratory evaluation.
             </p>
           </div>
 
@@ -384,11 +383,11 @@ export default function Features() {
       </section>
 
       {/* 6. Product Variants & App Concept */}
-      <section className="py-20 bg-white">
+      <section className="py-14 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 space-y-16 animate-fade-in-up">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-navy">
-              Planned Product Models
+              Product Editions
             </h2>
             <div className="w-12 h-1 bg-accent-orange mx-auto rounded-full" />
           </div>
@@ -431,9 +430,9 @@ export default function Features() {
               Preview
             </div>
             <div className="space-y-2 flex-grow text-center md:text-left">
-              <h4 className="font-bold text-primary-navy text-base">Coming Soon: The Vocasafe Caregiver App</h4>
+              <h4 className="font-bold text-primary-navy text-base">In Development: The Vocasafe Caregiver App</h4>
               <p className="text-xs text-gray-500 font-light leading-relaxed">
-                Our team is actively mapping layouts for the Vocasafe Mobile App. It will allow you to see current location, change watch configurations, adjust sensory levels, review vocabulary logs, and open emergency SOS channels directly from your iPhone or Android device.
+                Our team is actively designing the Vocasafe Mobile App — a companion that lets caregivers view live location, adjust watch configurations, set sensory levels, review vocabulary logs, and open emergency SOS channels from any iPhone or Android device.
               </p>
             </div>
           </div>
@@ -441,7 +440,7 @@ export default function Features() {
       </section>
 
       {/* 7. CTAs & Pricing info */}
-      <section className="py-20 bg-gradient-to-br from-primary-navy to-slate-900 text-white text-center relative overflow-hidden">
+      <section className="py-14 bg-gradient-to-br from-primary-navy to-slate-900 text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 space-y-6 animate-fade-in-up">
           <span className="text-accent-orange font-bold uppercase tracking-widest text-xs">

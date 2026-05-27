@@ -5,14 +5,14 @@ import { ShieldAlert } from "lucide-react";
 import ShareButtons from "./ShareButtons";
 
 export const metadata: Metadata = {
-  title: "Support Vocasafe Watch™: Augmentative Communication Devices for Everyone | Vocasafe",
-  description: "Discover augmentative communication devices designed for safety and accessibility. Support Vocasafe Watch™ to empower every voice.",
+  title: "Support Vocasafe Watch™: Wearable Assistive Communication Platform for Everyone | Vocasafe",
+  description: "Discover the wearable assistive communication platform designed for safety and accessibility. Support Vocasafe Watch™ to empower every voice.",
   alternates: {
     canonical: "https://www.vocasafewatch.net/crowdfunding",
   },
   openGraph: {
-    title: "Support Vocasafe Watch™: Augmentative Communication Devices for Everyone | Vocasafe",
-    description: "Discover augmentative communication devices designed for safety and accessibility. Support Vocasafe Watch™ to empower every voice.",
+    title: "Support Vocasafe Watch™: Wearable Assistive Communication Platform for Everyone | Vocasafe",
+    description: "Discover the wearable assistive communication platform designed for safety and accessibility. Support Vocasafe Watch™ to empower every voice.",
     url: "https://www.vocasafewatch.net/crowdfunding",
     siteName: "Vocasafewatch",
     images: [
@@ -114,7 +114,7 @@ export default function Crowdfunding() {
             </h1>
             
             <p className="text-sm sm:text-lg text-white/90 font-sans font-light leading-relaxed max-w-2xl">
-              Designing a durable, water-resistant smartwatch designed to support AAC communication and safety for individuals with autism and speech differences.
+              Developing a durable, water-resistant wearable assistive communication platform to support AAC communication and safety for individuals with autism and speech differences.
             </p>
 
             <div className="pt-4 flex flex-col sm:flex-row gap-4 sm:items-center">
@@ -151,8 +151,8 @@ export default function Crowdfunding() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            {/* Left Image of Girl on Couch */}
-            <div className="lg:col-span-5 flex justify-center">
+            {/* Left Image of Girl on Couch - Hidden on Mobile, Shown on Desktop */}
+            <div className="lg:col-span-5 hidden lg:flex justify-center">
               <div className="relative w-full max-w-[480px] aspect-[4/3] rounded-sm overflow-hidden bg-neutral-light border border-gray-100 shadow-md">
                 <Image
                   src="/images/disp- vocasafe.webp"
@@ -168,6 +168,7 @@ export default function Crowdfunding() {
             <div className="lg:col-span-7 space-y-6 text-left">
               <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-primary-navy tracking-tight leading-tight">
                 The Story Behind Vocasafe
+                The Story Behind VocaSafe
               </h2>
               
               {/* Badge item */}
@@ -176,7 +177,7 @@ export default function Crowdfunding() {
                   <span className="text-[8px] font-sans">▶</span>
                 </div>
                 <span className="text-[10px] font-sans font-bold text-gray-500 uppercase tracking-widest">
-                  About Vocasafe Watch™
+                  About VocaSafe Watch™
                 </span>
               </div>
 
@@ -239,7 +240,7 @@ export default function Crowdfunding() {
                   Seamless AAC Communication
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-600 font-sans font-light leading-relaxed">
-                  Vocasafe Watch™ is designed to bring communication to the wrist— aiming to make every moment accessible. Through planned compatibility with leading AAC systems, it aims to empower users to express themselves using personalized phrases, visual symbols, and text-to-speech features wherever they go. Designed to complement existing AAC tools, Vocasafe aims to extend the freedom to communicate anywhere, anytime.
+                  Vocasafe Watch™ brings communication directly to the wrist, making every moment accessible. Through compatibility with leading AAC systems actively developed under our co-design model, it empowers users to express themselves using personalized phrases, visual symbols, and text-to-speech features wherever they go. Built to complement existing AAC tools, Vocasafe extends the freedom to communicate anywhere, anytime.
                 </p>
               </div>
             </div>
@@ -269,7 +270,7 @@ export default function Crowdfunding() {
                   Smart Safety for Peace of Mind
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-600 font-sans font-light leading-relaxed">
-                  Designed to be more than communication — aiming for peace of mind. With planned GPS tracking and safety alerts, Vocasafe Watch™ is designed to help caregivers, parents, and professionals stay connected. Planned location updates and customizable safe-zone notifications are designed to provide added security wherever users go.
+                  Designed to be more than communication — supporting deep peace of mind. With GPS tracking and safety alerts under active development, Vocasafe Watch™ supports caregiver awareness in real time. Continuous location updates and customizable safe-zone notifications provide added security wherever users go.
                 </p>
               </div>
             </div>
@@ -304,7 +305,7 @@ export default function Crowdfunding() {
 
           <div className="max-w-4xl space-y-6 text-sm sm:text-base text-white/80 font-sans font-light leading-relaxed">
             <p>
-              Vocasafe Watch™ aims to create transformative impact across multiple stakeholder groups: aiming to help individuals with communication differences gain unprecedented independence and environmental access; designed to help families experience reduced anxiety and enhanced safety monitoring; and planned to provide educators and therapists with powerful new tools for AAC implementation in diverse settings.
+              Vocasafe Watch™ creates a transformative impact across multiple stakeholder groups: helping individuals with communication differences gain unprecedented independence and environmental access; supporting families with reduced anxiety and enhanced safety monitoring; and providing educators and therapists with powerful new tools for AAC implementation in diverse settings.
             </p>
             <p>
               Our technology is designed to empower participation in activities previously inaccessible to AAC users — swimming lessons, water parks, outdoor recreation, rainy-day outings — with the goal of fundamentally expanding quality of life and social inclusion.
@@ -436,7 +437,7 @@ export default function Crowdfunding() {
               </p>
             </div>
             <div className="space-y-2 border-t-2 border-dashed border-gray-200 pt-4 sm:pt-0 sm:border-t-0 sm:border-l sm:pl-4">
-              <span className="text-xs font-semibold text-gray-400 block">Planned 2026</span>
+              <span className="text-xs font-semibold text-gray-400 block">Pilot Phase 2026</span>
               <strong className="block text-sm font-bold text-primary-navy">Pilot Launch</strong>
               <p className="text-[11px] text-gray-400 font-light leading-relaxed">
                 Deploying initial cohorts to participating schools, private SLP speech clinics, and co-design families.

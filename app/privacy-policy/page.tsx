@@ -39,7 +39,7 @@ export default function PrivacyPolicy() {
               We collect information that you voluntarily provide to us when submitting inquiries or downloading resources, including:
             </p>
             <ul className="list-disc pl-5 space-y-2">
-              <li><strong>Contact Information:</strong> First and Last name, Email address, phone number, and organization name.</li>
+              <li><strong>Contact Information:</strong> First and Last name, and Email address.</li>
               <li><strong>Form Selections:</strong> Waitlist pre-order choices, rewards tier designations, or pilot program coordinates.</li>
               <li><strong>Uploaded Materials:</strong> Document attachments (such as school paperwork, referral notes, SLP reports) that you choose to upload to our secure storage.</li>
             </ul>
@@ -49,7 +49,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-xl font-bold text-primary-navy">Biometric & GPS Safety Data</h2>
             <div className="w-10 h-1 bg-accent-orange rounded-full" />
             <p>
-              Please note that during our pre-order waitlist phase, no continuous GPS tracking or biometric vitals sensor diagnostics are active on this website. Our planned mobile caregiver apps and hardware services will operate strictly on a <strong className="font-bold text-gray-800">HIPAA-compliant, end-to-end encrypted</strong> database, and will require explicit guardian opt-in before any tracking commences.
+              Please note that during our pre-order waitlist phase, no continuous GPS tracking or biometric vitals sensor diagnostics are active on this website. Our mobile caregiver apps and hardware services under active development operate strictly on a <strong className="font-bold text-gray-800">HIPAA-compliant, end-to-end encrypted</strong> database, and require explicit guardian opt-in before any tracking commences.
             </p>
           </div>
 
@@ -59,7 +59,7 @@ export default function PrivacyPolicy() {
             <ul className="list-disc pl-5 space-y-2">
               <li>To respond to waitlist pre-orders, partnerships, or pitch deck requests.</li>
               <li>To notify you about engineering milestones, pilot cohort schedules, and crowdfunding milestones.</li>
-              <li>To refine our smartwatch configuration layouts based on community survey co-design replies.</li>
+              <li>To refine our wearable platform configuration layouts based on community survey co-design replies.</li>
             </ul>
           </div>
 

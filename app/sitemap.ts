@@ -22,11 +22,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/terms-of-sale",
   ];
 
+  const HIGH = ["features", "impact", "partner", "about"];
+  const LOW = ["accessibility-statement", "privacy-policy", "terms-of-sale", "co-design"];
+
   const staticMaps = staticSlugs.map((slug) => ({
     url: `${baseUrl}${slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
-    priority: slug === "" ? 1.0 : 0.8,
+    priority: slug === "" ? 1.0
+      : HIGH.some((p) => slug.includes(p)) ? 0.9
+      : slug === "/blog" ? 0.7
+      : LOW.some((p) => slug.includes(p)) ? 0.5
+      : 0.8,
   }));
 
   // 2. Dynamic Blog Posts Array from Sanity/Fallback

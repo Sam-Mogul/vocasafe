@@ -33,7 +33,7 @@ export default function AccessibilityStatement() {
               Vocasafe Watch™ was founded on lived experience with developmental communication challenges. We believe communication is a fundamental human right, and that digital barriers should never prevent families, therapists, or partners from accessing our tools.
             </p>
             <p>
-              We are actively developing this website and our future smartwatch hardware interfaces to align with the <strong className="font-bold text-gray-800">Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong> standards at a minimum, targeting Level AAA where possible.
+              We are actively developing this website and our wearable assistive communication platform hardware interfaces to align with the <strong className="font-bold text-gray-800">Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong> standards at a minimum, targeting Level AAA where possible.
             </p>
           </div>
 

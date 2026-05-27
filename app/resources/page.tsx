@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 const DOWNLOADS = [
   {
     title: "Product Overview Sheet",
-    description: "Detailed engineering specifications, dimensions, waterproof certifications, and planned capabilities of Vocasafe Watch™.",
+    description: "Detailed engineering specifications, dimensions, waterproof certifications, and core capabilities of Vocasafe Watch™.",
     href: "/pdfs/vocasafe-product-overview.pdf",
     isGated: false,
     btnLabel: "Download PDF",

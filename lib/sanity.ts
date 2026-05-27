@@ -1,4 +1,4 @@
-﻿import { createClient } from "@sanity/client";
+import { createClient } from "@sanity/client";
 
 // Build a Sanity client if keys are present
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "";
@@ -54,7 +54,7 @@ export const MOCK_POSTS: BlogPost[] = [
       <p>Imagine a playground: swings are flying, children are running, sandboxes are wet, and water toys are active. If an autistic child or a non-verbal individual has their voice tethered to a heavy iPad, that voice is left sitting on a classroom desk. It cannot go to the swings. It cannot go near sensory water troughs. The child is left completely silent, unable to indicate basic preferences or calls for support.</p>
       
       <p><strong>The Solution is Wearable</strong></p>
-      <p>By moving symbol-based communication directly to the user's wrist, we are launching an absolute paradigm shift. A durable, waterproof smartwatch stays attached all day. It becomes an extension of the body, traveling down slides, into mud, and on water swings, ensuring communication is truly borders-free. Wrist-worn AAC is the logical future of assistive speech tech, and Vocasafe is driving this transition.</p>
+      <p>By moving symbol-based communication directly to the user's wrist, we are launching an absolute paradigm shift. A durable, waterproof wearable assistive communication platform stays attached all day. It becomes an extension of the body, traveling down slides, into mud, and on water swings, ensuring communication is truly borders-free. Wrist-worn AAC is the logical future of assistive speech tech, and Vocasafe is driving this transition.</p>
     `
   },
   {
@@ -67,7 +67,7 @@ export const MOCK_POSTS: BlogPost[] = [
     excerpt: "Zero-friction is our core engineering benchmark. Learn how custom sensory-friendly silicone straps and adaptive environment screens protect users from sensory overload.",
     coverImage: "/images/Gemini_Generated_Image_2y5zil2y5zil2y5z.png",
     body: `
-      <p>In product design, friction is defined as any barrier that slows down a user's target action. For neurodivergent individuals and developmental speech users, standard smartwatches create immense sensory friction. High-pitched warning alerts, blinding bright visuals, complex screen taps, and restrictive, sweaty straps can lead directly to sensory defensiveness and meltdowns.</p>
+      <p>In product design, friction is defined as any barrier that slows down a user's target action. For neurodivergent individuals and developmental speech users, standard consumer smartwatches create immense sensory friction. High-pitched warning alerts, blinding bright visuals, complex screen taps, and restrictive, sweaty straps can lead directly to sensory defensiveness and meltdowns.</p>
       
       <p>At Vocasafe, our core design benchmark is <strong>Zero Friction</strong>. This means modifying hardware and software configurations to meet the cognitive, visual, and motor profiles of sensitive users:</p>
       
@@ -161,7 +161,7 @@ export const MOCK_POSTS: BlogPost[] = [
     body: `
       <p>Standard tracking maps display a single blue dot. While knowing your child is 50 yards away is helpful, a blue dot doesn't capture context. It doesn't tell you if your child is laughing on swings or experiencing a developmental sensory crisis near loud lawnmowers.</p>
       
-      <p>At Vocasafe, we are redefining safety. Our planned vitals integrations (galvanic skin responses) and caregiver audio check streams are designed to give parent context, mapping distress alerts to prevent meltdowns before they occur.</p>
+      <p>At Vocasafe, we are redefining safety. Our vitals integrations (galvanic skin responses) and caregiver audio check streams are actively developed to give parents crucial context, mapping distress alerts to prevent meltdowns before they occur.</p>
     `
   },
   {
@@ -235,11 +235,11 @@ export const MOCK_POSTS: BlogPost[] = [
     readTime: "5 min read",
     author: { name: "Catherine Katambo", bio: "Founder & Mother, Vocasafe Watch™" },
     categories: [{ title: "Company Insights", slug: "company-insights" }, { title: "Wearable AAC Tech", slug: "wearable-aac-tech" }],
-    excerpt: "Founder Catherine Katambo outlines our pivot from clinical tablet apps to independent waterproof smartwatches, driven by user co-design panels.",
+    excerpt: "Founder Catherine Katambo outlines our pivot from clinical tablet apps to independent waterproof wearable assistive communication platforms, driven by user co-design panels.",
     body: `
-      <p>When Vocasafe began, we planned a standard tablet app. However, consistent feedback from parents and occupational therapists highlighted a massive roadblock: tablet durability. Students threw them during sensory overload, or left them behind near muddy swinger zones.</p>
+      <p>When Vocasafe began, we initially focused on a standard tablet app. However, consistent feedback from parents and occupational therapists highlighted a massive roadblock: tablet durability. Students threw them during sensory overload, or left them behind near muddy swinger zones.</p>
       
-      <p>This led to our pivotal shift: developing a waterproof, dedicated smartwatch chassis. By taking complete ownership of the hardware, we bypass app stores restrictions, integrate vital sensor checks directly, and guarantee all children carry a durable, uncompromised voice.</p>
+      <p>This led to our pivotal shift: developing a waterproof, dedicated wearable assistive communication platform chassis. By taking complete ownership of the hardware, we bypass app stores restrictions, integrate vital sensor checks directly, and guarantee all children carry a durable, uncompromised voice.</p>
     `
   }
 ];

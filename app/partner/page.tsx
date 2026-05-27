@@ -30,7 +30,7 @@ export default function Partner() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* 1. Header Section */}
-      <section className="relative bg-gradient-to-br from-primary-navy to-slate-900 text-white py-16 lg:py-20 text-center overflow-hidden">
+      <section className="relative bg-gradient-to-br from-primary-navy to-slate-900 text-white py-12 lg:py-14 text-center overflow-hidden">
         {/* Background Image */}
         <Image
           src="/images/disp- vocasafe.webp"
@@ -50,7 +50,7 @@ export default function Partner() {
             Partnering for Innovation and Inclusion
           </h1>
           <p className="text-base sm:text-lg text-white/80 font-light max-w-2xl mx-auto leading-relaxed">
-            Join Vocasafe Watch™ as a strategic investor, clinical researcher, distributor, or school pilot partner to reshape speech accessibility.
+            VocaSafe Watch™ is currently in active development, with pilot partnerships opening in 2026. Join us as a strategic partner, clinician, researcher, or distributor to advance an intelligent wearable assistive communication platform designed for critical real-world moments.
           </p>
         </div>
       </section>
@@ -73,7 +73,7 @@ export default function Partner() {
               </div>
               <h3 className="text-lg font-bold text-primary-navy">Investment & Strategic Partnerships</h3>
               <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                Vocasafe is opening early pre-seed and strategic seed-round conversations to accelerate hardware certifications (IP68, FCC, CE), expand our patent-pending hardware designs, and scale the HIPAA-compliant cloud analytics dashboards.
+                Vocasafe is progressing through early-stage investment conversations to accelerate hardware certifications (IP68, FCC, CE), expand our patent-pending hardware designs, and scale HIPAA-compliant cloud analytics dashboards.
               </p>
             </div>
             {/* Way 2 */}
@@ -139,7 +139,7 @@ export default function Partner() {
               </span>
               <h3 className="text-lg font-bold text-primary-navy">Competitive Advantage</h3>
               <p className="text-xs text-gray-500 font-light leading-relaxed">
-                Vocasafe is the first waterproof smartwatch created specifically to bridge symbol-based speech with critical parent tracking. Unlike standard tablet computers, it cannot be dropped, operates in playgrounds, and offers a non-stigmatizing, premium watch layout.
+                Vocasafe is the first waterproof wearable platform designed specifically to bridge symbol-based speech with critical safety tracking. Unlike bulky tablets, it cannot be dropped, operates in playgrounds and pools, and offers a non-stigmatising, premium watch form factor.
               </p>
             </div>
 
@@ -152,7 +152,7 @@ export default function Partner() {
                 Vocasafe Watch™ operates on a high-margin, dual-stream revenue model:
               </p>
               <ul className="text-xs text-gray-500 font-light space-y-2 pl-4 list-disc">
-                <li><strong>Hardware:</strong> Durable smartwatch sales and wearable sensory straps.</li>
+                <li><strong>Hardware:</strong> Durable wearable assistive communication platform sales and sensory straps.</li>
                 <li><strong>SaaS Subscriptions:</strong> Secure cloud SLP metrics, continuous route logs, and caregiver SOS features.</li>
               </ul>
             </div>

@@ -16,7 +16,7 @@ export default function About() {
     <div className="flex flex-col min-h-screen bg-[#F5F5F5] font-sans">
       
       {/* 1. Hero Section matching About Screenshot 1 */}
-      <section className="relative w-full h-[320px] sm:h-[400px] flex items-center overflow-hidden">
+      <section className="relative w-full flex items-center overflow-hidden" style={{minHeight: 'clamp(240px, 35vw, 380px)'}}>
         {/* Background Image of the smiling boy */}
         <Image
           src="/images/416f3c_9e072eff0b1d4b3ab0eea598d4c8fb9a~mv2.jpg"
@@ -43,7 +43,7 @@ export default function About() {
       </section>
 
       {/* 2. Our Founder's Story matching About Screenshot 2 */}
-      <section className="py-20 bg-white">
+      <section className="py-14 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Section Header */}
           <div className="text-center space-y-3">
@@ -99,7 +99,7 @@ export default function About() {
       </section>
 
       {/* 3. What We Stand For Section matching About Screenshot 3 */}
-      <section className="py-20 bg-[#F5F5F5] border-t border-gray-200/60">
+      <section className="py-14 bg-[#F5F5F5] border-t border-gray-200/60">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           {/* Header */}
@@ -141,7 +141,7 @@ export default function About() {
                 </div>
                 <h3 className="font-sans font-bold text-base text-[#121F36]">Inclusion</h3>
                 <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                  We believe every voice matters and are working to reflect this in future design.
+                  Every design decision reflects our belief that every voice matters — and every person deserves to be heard.
                 </p>
               </div>
 
@@ -152,7 +152,7 @@ export default function About() {
                 </div>
                 <h3 className="font-sans font-bold text-base text-[#121F36]">Connection</h3>
                 <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                  Planned to build stronger connections in future development between families, educators, and caregivers.
+                  Vocasafe builds stronger connections between families, educators, and caregivers — keeping everyone informed and in sync.
                 </p>
               </div>
 
@@ -163,7 +163,7 @@ export default function About() {
                 </div>
                 <h3 className="font-sans font-bold text-base text-[#121F36]">Innovation</h3>
                 <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                  Technology being developed for real lives.
+                  Technology built around real lives — with therapist collaboration and lived experience at the centre of every decision.
                 </p>
               </div>
 
@@ -174,7 +174,7 @@ export default function About() {
                 </div>
                 <h3 className="font-sans font-bold text-base text-[#121F36]">Independence</h3>
                 <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
-                  Aims to empower users to move and communicate freely.
+                  Empowering users to move, communicate, and participate in daily life without barriers — wherever they are.
                 </p>
               </div>
 
@@ -184,7 +184,7 @@ export default function About() {
       </section>
 
       {/* 4. Our Mission & Vision Banners matching About Screenshot 4 */}
-      <section className="bg-[#121F36] text-white py-20 border-b border-white/5">
+      <section className="bg-[#121F36] text-white py-14 border-b border-white/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           
           {/* Mission Block */}
@@ -220,12 +220,12 @@ export default function About() {
       </section>
 
       {/* 5. Join the Vocasafe Movement Split Card matching About Screenshot 5 */}
-      <section className="py-20 bg-white">
+      <section className="py-14 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 rounded-[18px] overflow-hidden shadow-lg border border-gray-100 items-stretch">
             
             {/* Left: Watch Illustration */}
-            <div className="relative min-h-[300px] md:min-h-[400px] bg-[#F5F5F5]">
+            <div className="relative min-h-[260px] md:min-h-[340px] bg-[#F5F5F5]">
               <Image
                 src="/images/watch illustration.avif"
                 alt="Vocasafe Watch Illustration"

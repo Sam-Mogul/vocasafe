@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Users, Smile, School, ShieldAlert, CheckCircle2, Heart, Award, ArrowRight } from "lucide-react";
+import { ShieldAlert, CheckCircle2, Heart, Award, ArrowRight, Cpu, Target, TrendingUp, Handshake, Lock, HeartHandshake, Brain, GraduationCap } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "The Impact of Vocasafe Watch™ | Empowering Voices, Ensuring Safety",
@@ -30,7 +30,7 @@ export default function Impact() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* 1. Header Section */}
-      <section className="relative bg-gradient-to-br from-primary-navy to-slate-900 text-white py-16 lg:py-20 text-center overflow-hidden">
+      <section className="relative bg-gradient-to-br from-primary-navy to-slate-900 text-white py-12 lg:py-14 text-center overflow-hidden">
         {/* Background Image */}
         <Image
           src="/images/disp- vocasafe.webp"
@@ -50,13 +50,13 @@ export default function Impact() {
             Creating Impact, One Voice at a Time.
           </h1>
           <p className="text-base sm:text-lg text-white/80 font-light max-w-2xl mx-auto leading-relaxed">
-            See how wrist-worn AAC and intelligent GPS tracking will empower neurodivergent children, support speech SLPs, and reassure families.
+            See how wrist-worn AAC and intelligent GPS tracking is being built to empower neurodivergent individuals, support speech therapists, and give families genuine peace of mind.
           </p>
         </div>
       </section>
 
       {/* 2. Three Audience Callout Cards */}
-      <section className="py-20 bg-white">
+      <section className="py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-navy">
@@ -68,8 +68,8 @@ export default function Impact() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
             <div className="bg-neutral-light border border-gray-100 rounded-2xl p-8 space-y-6 hover:-translate-y-1 transition-transform">
-              <div className="w-12 h-12 rounded-xl bg-orange-100 text-accent-orange flex items-center justify-center">
-                <Smile size={24} />
+              <div className="w-12 h-12 rounded-xl bg-orange-50 text-accent-orange flex items-center justify-center">
+                <HeartHandshake size={24} />
               </div>
               <h3 className="text-lg font-bold text-primary-navy">Caregivers & Families</h3>
               <p className="text-xs text-gray-500 font-light leading-relaxed">
@@ -79,19 +79,19 @@ export default function Impact() {
 
             {/* Card 2 */}
             <div className="bg-neutral-light border border-gray-100 rounded-2xl p-8 space-y-6 hover:-translate-y-1 transition-transform">
-              <div className="w-12 h-12 rounded-xl bg-blue-100 text-primary-navy flex items-center justify-center">
-                <Users size={24} />
+              <div className="w-12 h-12 rounded-xl bg-blue-50 text-primary-navy flex items-center justify-center">
+                <Brain size={24} />
               </div>
               <h3 className="text-lg font-bold text-primary-navy">Therapists & SLPs</h3>
-              <p className="text-xs text-gray-500 font-light leading-relaxed">
-                We empower Speech-Language Pathologists by ensuring vocabulary targets travel *with* the patient, moving therapy from isolated clinical rooms to the playground. Integrated cloud dashboards will track used vocabulary, streamlining speech assessments.
+          <p className="text-xs text-gray-500 font-light leading-relaxed">
+                We empower Speech-Language Pathologists by ensuring vocabulary targets travel with the patient, moving therapy from isolated clinical rooms to the playground. Integrated cloud dashboards track vocabulary usage, streamlining speech assessments.
               </p>
             </div>
 
             {/* Card 3 */}
             <div className="bg-neutral-light border border-gray-100 rounded-2xl p-8 space-y-6 hover:-translate-y-1 transition-transform">
-              <div className="w-12 h-12 rounded-xl bg-green-100 text-emerald-600 flex items-center justify-center">
-                <School size={24} />
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <GraduationCap size={24} />
               </div>
               <h3 className="text-lg font-bold text-primary-navy">Schools & Districts</h3>
               <p className="text-xs text-gray-500 font-light leading-relaxed">
@@ -110,7 +110,7 @@ export default function Impact() {
               Real-World Scenarios
             </h2>
             <p className="text-xs text-gray-500 font-medium uppercase tracking-widest">
-              Illustrating the Future Lifeline of Vocasafe Watch™
+              Illustrating the Real-World Value of Vocasafe Watch™
             </p>
           </div>
 
@@ -141,7 +141,7 @@ export default function Impact() {
       </section>
 
       {/* 4. Statistics Block */}
-      <section className="py-20 bg-white">
+      <section className="py-14 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-navy">
@@ -203,60 +203,101 @@ export default function Impact() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="space-y-3 p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
-              <strong className="block text-sm font-bold text-primary-navy">
-                🚀 Cutting-Edge Tech
-              </strong>
-              <p className="text-xs text-gray-500 font-light leading-relaxed">
-                By integrating localized voice synthesis, semantic context predictive modeling, and LTE modular cellular bands, we are building a state-of-the-art assistive wearable.
-              </p>
+            {/* Card 1 */}
+            <div className="space-y-4 p-6 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+              <div className="w-10 h-10 rounded-lg bg-orange-50 text-accent-orange flex items-center justify-center">
+                <Cpu size={20} />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-sm font-bold text-primary-navy">
+                  Cutting-Edge Tech
+                </h3>
+                <p className="text-xs text-gray-500 font-light leading-relaxed">
+                  By integrating localized voice synthesis, semantic context predictive modeling, and LTE modular cellular bands, we are building a state-of-the-art assistive wearable.
+                </p>
+              </div>
             </div>
-            <div className="space-y-3 p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
-              <strong className="block text-sm font-bold text-primary-navy">
-                🎯 Targeted Social Impact
-              </strong>
-              <p className="text-xs text-gray-500 font-light leading-relaxed">
-                Our technology targets a deeply underserved niche: autistic children, individuals with apraxia, and neurodivergent adults who deserve portable communication support.
-              </p>
+
+            {/* Card 2 */}
+            <div className="space-y-4 p-6 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+              <div className="w-10 h-10 rounded-lg bg-blue-50 text-primary-navy flex items-center justify-center">
+                <Target size={20} />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-sm font-bold text-primary-navy">
+                  Targeted Social Impact
+                </h3>
+                <p className="text-xs text-gray-500 font-light leading-relaxed">
+                  Our technology targets a deeply underserved niche: autistic children, individuals with apraxia, and neurodivergent adults who deserve portable communication support.
+                </p>
+              </div>
             </div>
-            <div className="space-y-3 p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
-              <strong className="block text-sm font-bold text-primary-navy">
-                📈 High Scalability
-              </strong>
-              <p className="text-xs text-gray-500 font-light leading-relaxed">
-                A combination of durable hardware sales and secure cloud SLP dashboards creates a robust, highly-scalable software-as-a-service model with high growth factors.
-              </p>
+
+            {/* Card 3 */}
+            <div className="space-y-4 p-6 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+              <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <TrendingUp size={20} />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-sm font-bold text-primary-navy">
+                  High Scalability
+                </h3>
+                <p className="text-xs text-gray-500 font-light leading-relaxed">
+                  A combination of durable hardware sales and secure cloud SLP dashboards creates a robust, highly-scalable software-as-a-service model with high growth factors.
+                </p>
+              </div>
             </div>
-            <div className="space-y-3 p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
-              <strong className="block text-sm font-bold text-primary-navy">
-                🤝 Dedicated Support
-              </strong>
-              <p className="text-xs text-gray-500 font-light leading-relaxed">
-                We support institutional partners and schools with specialized class mounts, hardware orientations, custom vocabulary templates, and direct SLP lines.
-              </p>
+
+            {/* Card 4 */}
+            <div className="space-y-4 p-6 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+              <div className="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                <Handshake size={20} />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-sm font-bold text-primary-navy">
+                  Dedicated Support
+                </h3>
+                <p className="text-xs text-gray-500 font-light leading-relaxed">
+                  We support institutional partners and schools with specialized class mounts, hardware orientations, custom vocabulary templates, and direct SLP lines.
+                </p>
+              </div>
             </div>
-            <div className="space-y-3 p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
-              <strong className="block text-sm font-bold text-primary-navy">
-                🔐 HIPAA & Privacy First
-              </strong>
-              <p className="text-xs text-gray-500 font-light leading-relaxed">
-                Data security is non-negotiable. All biometric checks, caregiver audio feeds, and route mapping are protected by secure, HIPAA-compliant storage keys.
-              </p>
+
+            {/* Card 5 */}
+            <div className="space-y-4 p-6 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+              <div className="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center">
+                <Lock size={20} />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-sm font-bold text-primary-navy">
+                  HIPAA & Privacy First
+                </h3>
+                <p className="text-xs text-gray-500 font-light leading-relaxed">
+                  Data security is non-negotiable. All biometric checks, caregiver audio feeds, and route mapping are protected by secure, HIPAA-compliant storage keys.
+                </p>
+              </div>
             </div>
-            <div className="space-y-3 p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
-              <strong className="block text-sm font-bold text-primary-navy">
-                🧡 Lived Experience Driven
-              </strong>
-              <p className="text-xs text-gray-500 font-light leading-relaxed">
-                Our founder Catherine Katambo builds directly from her experience as an AAC mother. Every design choice is driven by a deep, authentic understanding of care.
-              </p>
+
+            {/* Card 6 */}
+            <div className="space-y-4 p-6 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+              <div className="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+                <Heart size={20} />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-sm font-bold text-primary-navy">
+                  Lived Experience Driven
+                </h3>
+                <p className="text-xs text-gray-500 font-light leading-relaxed">
+                  Our founder Catherine Katambo builds directly from her experience as an AAC mother. Every design choice is driven by a deep, authentic understanding of care.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* 6. Partner CTA */}
-      <section className="py-20 bg-gradient-to-br from-primary-navy to-slate-900 text-white text-center relative overflow-hidden">
+      <section className="py-14 bg-gradient-to-br from-primary-navy to-slate-900 text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 space-y-6">
           <h2 className="text-3xl sm:text-4xl font-display font-bold">

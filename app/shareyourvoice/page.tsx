@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { MessageSquare, ExternalLink, ShieldCheck, Heart } from "lucide-react";
+import { MessageSquare, ExternalLink, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Share Your Voice | Vocasafe Watch™ — Communication Anywhere. Anytime.",
-  description: "Join the Vocasafe Watch™ community and share why inclusive, portable communication matters. Your story helps shape the future of our AI-powered assistive smartwatch for non-verbal and autistic individuals.",
+  description: "Join the Vocasafe Watch™ community and share why inclusive, portable communication matters. Your story helps shape the future of our intelligent wearable assistive communication platform for non-verbal and autistic individuals.",
   alternates: {
     canonical: "https://www.vocasafewatch.net/shareyourvoice",
   },
   openGraph: {
     title: "Share Your Voice | Vocasafe Watch™ — Communication Anywhere. Anytime.",
-    description: "Join the Vocasafe Watch™ community and share why inclusive, portable communication matters. Your story helps shape the future of our AI-powered assistive smartwatch for non-verbal and autistic individuals.",
+    description: "Join the Vocasafe Watch™ community and share why inclusive, portable communication matters. Your story helps shape the future of our intelligent wearable assistive communication platform for non-verbal and autistic individuals.",
     url: "https://www.vocasafewatch.net/shareyourvoice",
     siteName: "Vocasafewatch",
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function ShareYourVoice() {
   return (
-    <div className="flex flex-col min-h-screen bg-neutral-light/50 justify-center">
+    <div className="flex flex-col min-h-screen bg-neutral-light/20 justify-center">
       {/* 1. Main visual block */}
       <section className="relative py-20 lg:py-24 bg-primary-navy text-white text-center overflow-hidden border-b border-gray-100">
         {/* Background Image */}
@@ -38,14 +38,10 @@ export default function ShareYourVoice() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-15"
+          className="object-cover opacity-[0.06]"
         />
         <div className="absolute inset-0 bg-black/55 pointer-events-none" />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 text-center space-y-8 relative z-10">
-          <div className="inline-flex items-center gap-2 bg-orange-100/10 border border-orange-500/20 text-accent-orange rounded-full py-1.5 px-4 text-xs font-bold uppercase tracking-wider">
-            <Heart size={12} />
-            <span>Community Outreach</span>
-          </div>
 
           <h1 className="text-4xl sm:text-5xl font-sans font-extrabold text-white leading-tight">
             Share Your Voice
@@ -53,7 +49,7 @@ export default function ShareYourVoice() {
           <div className="w-12 h-1 bg-accent-orange mx-auto rounded-full" />
 
           <p className="text-base sm:text-lg text-white/90 font-light max-w-2xl mx-auto leading-relaxed">
-            Your personal story directly influences our smartwatch development. Tell us how a waterproof wrist-worn communication keyboard and real-time safe zone tracking will impact your student's, patient's, or child's life.
+            Your personal story directly influences our platform development. Tell us how a waterproof wrist-worn communication keyboard and real-time safe zone tracking will impact your student's, patient's, or child's life.
           </p>
 
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-left max-w-lg mx-auto space-y-3">
