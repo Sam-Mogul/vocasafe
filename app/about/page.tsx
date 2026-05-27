@@ -70,6 +70,15 @@ export default function About() {
                   sizes="(max-width: 1024px) 100vw, 420px"
                   className="object-cover"
                 />
+                {/* Caption overlay at bottom of image */}
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/75 to-transparent px-5 py-4 z-10">
+                  <p className="text-white font-sans font-bold text-xs leading-snug">
+                    Catherine Katambo
+                  </p>
+                  <p className="text-white/80 font-sans font-light text-[10px] tracking-wide">
+                    Founder, Vocasafe Watch™
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -199,7 +208,7 @@ export default function About() {
               We aim to empower individuals who rely on AAC with the freedom to communicate safely, confidently, and independently — wherever life takes them.
             </p>
             <p className="text-xs sm:text-sm text-white/70 font-light uppercase tracking-wider pt-2 border-t border-white/10 max-w-sm">
-              We believe every person deserves a voice that’s always within reach.
+              We believe every person deserves a voice that's always within reach.
             </p>
           </div>
 
