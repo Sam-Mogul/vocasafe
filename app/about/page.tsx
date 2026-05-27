@@ -19,7 +19,7 @@ export default function About() {
       <section className="relative w-full flex items-center overflow-hidden" style={{minHeight: 'clamp(240px, 35vw, 380px)'}}>
         {/* Background Image of the smiling boy */}
         <Image
-          src="/images/416f3c_9e072eff0b1d4b3ab0eea598d4c8fb9a~mv2.jpg"
+          src="/images/disp- vocasafe.webp"
           alt="Vocasafe Watch About Hero"
           fill
           priority
