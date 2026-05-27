@@ -16,7 +16,7 @@ export default function About() {
     <div className="flex flex-col min-h-screen bg-[#F5F5F5] font-sans">
       
       {/* 1. Hero Section matching About Screenshot 1 */}
-      <section className="relative w-full flex items-center overflow-hidden" style={{minHeight: 'clamp(240px, 35vw, 380px)'}}>
+      <section className="relative w-full flex items-center overflow-hidden min-h-[240px] sm:min-h-[300px] lg:min-h-[260px]">
         {/* Background Image of the smiling boy */}
         <Image
           src="/images/disp- vocasafe.webp"
