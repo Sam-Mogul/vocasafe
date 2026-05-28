@@ -66,7 +66,7 @@ export default function HoldingPage() {
       <div className="flex items-center gap-6 mt-16">
         {/* TikTok */}
         <a
-          href="https://tiktok.com/@vocasafe"
+          href="https://www.tiktok.com/@vocasafewatch.net"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="TikTok"
