@@ -170,7 +170,7 @@ export default function Footer() {
             <ul className="space-y-1.5">
               <li><Link href="/accessibility-statement" className="hover:underline">Accessibility Statement</Link></li>
               <li><Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
-              <li><Link href="/terms-of-sale" className="hover:underline">Terms of Sale</Link></li>
+              
             </ul>
           </div>
         </div>
@@ -211,10 +211,10 @@ export default function Footer() {
         <div className="pt-6 border-t border-white/15 flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
           <div className="text-center md:text-left space-y-2">
             <p className="text-[11px] text-white/60">
-              © 2026 by VocaSafe Watch™. All rights reserved.
+              © 2026 by Vocasafe Watch™. All rights reserved.
             </p>
             <p className="text-[10px] text-white/45 font-light leading-normal max-w-2xl">
-              VocaSafe Watch™ is currently in development. Features and functionality described are subject to change.
+              Vocasafe Watch™ is currently in development. Features and functionality described are subject to change.
             </p>
           </div>
           {/* BBB Seal */}

@@ -16,10 +16,10 @@ export default function About() {
     <div className="flex flex-col min-h-screen bg-[#F5F5F5] font-sans">
       
       {/* 1. Hero Section matching About Screenshot 1 */}
-      <section className="relative w-full flex items-center overflow-hidden" style={{minHeight: 'clamp(240px, 35vw, 380px)'}}>
+      <section className="relative w-full flex items-center overflow-hidden min-h-[240px] sm:min-h-[300px] lg:min-h-[230px]">
         {/* Background Image of the smiling boy */}
         <Image
-          src="/images/416f3c_9e072eff0b1d4b3ab0eea598d4c8fb9a~mv2.jpg"
+          src="/images/disp- vocasafe.webp"
           alt="Vocasafe Watch About Hero"
           fill
           priority
@@ -27,7 +27,7 @@ export default function About() {
           className="object-cover"
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-black/80" />
 
         {/* Text */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-left">
@@ -70,6 +70,15 @@ export default function About() {
                   sizes="(max-width: 1024px) 100vw, 420px"
                   className="object-cover"
                 />
+                {/* Caption overlay at bottom of image */}
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/75 to-transparent px-5 py-4 z-10">
+                  <p className="text-white font-sans font-bold text-xs leading-snug">
+                    Catherine Katambo
+                  </p>
+                  <p className="text-white/80 font-sans font-light text-[10px] tracking-wide">
+                    Founder, Vocasafe Watch™
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -199,7 +208,7 @@ export default function About() {
               We aim to empower individuals who rely on AAC with the freedom to communicate safely, confidently, and independently — wherever life takes them.
             </p>
             <p className="text-xs sm:text-sm text-white/70 font-light uppercase tracking-wider pt-2 border-t border-white/10 max-w-sm">
-              We believe every person deserves a voice that’s always within reach.
+              We believe every person deserves a voice that's always within reach.
             </p>
           </div>
 

@@ -168,7 +168,7 @@ export default function Crowdfunding() {
             <div className="lg:col-span-7 space-y-6 text-left">
               <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-primary-navy tracking-tight leading-tight">
                 The Story Behind Vocasafe
-                The Story Behind VocaSafe
+                
               </h2>
               
               {/* Badge item */}
