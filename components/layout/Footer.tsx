@@ -183,7 +183,10 @@ export default function Footer() {
           <div className="flex items-center gap-6">
             {/* TikTok */}
             <a href="https://tiktok.com/@vocasafe" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#E95F21] transition-colors" aria-label="TikTok">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V0h5v4a5 5 0 0 1-5 5v3a5.002 5.002 0 0 0-4-1z"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8Z"/>
+                <path d="M10 12C8.34315 12 7 13.3431 7 15C7 16.6569 8.34315 18 10 18C11.6569 18 13 16.6569 13 15V6C13.3333 7 14.6 9 17 9"/>
+              </svg>
             </a>
             {/* Instagram */}
             <a href="https://instagram.com/vocasafewatch" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#E95F21] transition-colors" aria-label="Instagram">

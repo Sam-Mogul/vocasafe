@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import LayoutShell from "@/components/layout/LayoutShell";
 import Script from "next/script";
 
 const sora = Sora({
@@ -69,9 +68,7 @@ export default function RootLayout({
             </Script>
           </>
         )}
-        <Navbar />
-        <main className="flex-grow pt-[58px]">{children}</main>
-        <Footer />
+        <LayoutShell>{children}</LayoutShell>
       </body>
     </html>
   );
